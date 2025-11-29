@@ -4,7 +4,9 @@ import react from '@vitejs/plugin-react';
 // Optimized build settings for GitHub Pages
 export default defineConfig({
   plugins: [react()],
-  base: '/tw092669-ctrl/',
+  // Use root base during development for easier local testing,
+  // and the GitHub Pages base in production (repo = 26cm).
+  base: process.env.NODE_ENV === 'production' ? '/26cm/' : '/',
   build: {
     outDir: 'dist',
     sourcemap: false,
