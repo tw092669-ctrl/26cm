@@ -5,9 +5,9 @@
 
 # 依賴相關
 node_modules/
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# Keep lock files for reproducible builds in GitHub Actions
+# package-lock.json is tracked
+# yarn.lock is tracked
 
 # 建置輸出
 dist/
