@@ -54,9 +54,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData, options, onSave,
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Validate name and price (allow price = 0)
-    if (!formData.name) return;
-    if (formData.price == null || Number.isNaN(Number(formData.price))) return;
+    if (!formData.name || !formData.price) return;
 
     const product: Product = {
       id: initialData?.id || generateId(),
@@ -145,8 +143,8 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialData, options, onSave,
                 required
                 type="number"
                 min="0"
-                value={formData.price ?? ''}
-                onChange={(e) => handleChange('price', e.target.value === '' ? 0 : Number(e.target.value))}
+                value={formData.price || ''}
+                onChange={(e) => handleChange('price', e.target.value)}
                 className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none"
               />
             </div>
