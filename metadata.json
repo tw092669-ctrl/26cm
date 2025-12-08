@@ -1,0 +1,5 @@
+{
+  "name": "Shard Allocator",
+  "description": "A calculator for optimizing shard allocation between Main Battle and Special Skills based on specific game mechanics.",
+  "requestFramePermissions": []
+}
