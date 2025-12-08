@@ -1,6 +1,6 @@
-# Shard Allocator
+# 五代麥樂獸拼圖配點
 
-一個基於 React 和 TypeScript 的角色碎片分配計算器，幫助您優化遊戲角色的屬性配置。
+一個基於 React 和 TypeScript 的角色碎片分配計算器,幫助您優化遊戲角色的屬性配置。
 
 ## 功能特點
 
