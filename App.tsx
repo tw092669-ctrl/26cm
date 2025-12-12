@@ -471,7 +471,7 @@ const App: React.FC = () => {
                         <div key={`skill-${index}`} className="flex justify-center">
                             <StatControl
                                 title={`特技 ${index + 1}`}
-                                currentLevelLabel={`Lv ${level}`}
+                                currentLevelLabel={`Lv.${level}`}
                                 currentCost={currentCost}
                                 nextCost={nextCost}
                                 canIncrease={canIncrease}
