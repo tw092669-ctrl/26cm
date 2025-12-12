@@ -68,8 +68,8 @@ export const SKILL_CHARACTERS: Character[] = [
 
 export const getMainMultiplier = (level: number): number => {
   if (level <= 0) return 0;
-  if (level <= 4) return 400; // Gold 1-4
-  if (level <= 9) return 520; // Gold 5 - Red 4
+  if (level <= 5) return 400; // Gold 1-5
+  if (level <= 9) return 520; // Red 1-4
   if (level === 10) return 640; // Red 5
   if (level <= 12) return 700; // Eternal 1-2
   return 760; // Eternal 3-5 (Level 13, 14, 15)
