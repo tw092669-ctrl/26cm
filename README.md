@@ -2,19 +2,103 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# 五代麥樂獸拼圖配點工具
 
-This contains everything you need to run your app locally.
+這是一個基於 React + TypeScript + Vite 構建的麥樂獸拼圖配點計算工具，可協助玩家規劃角色屬性配置。
 
-View your app in AI Studio: https://ai.studio/apps/drive/1OlHarFO0cPCX8pEenR4CI7cU-3dhlVls
+## 功能特色
 
-## Run Locally
+- 🎮 角色選擇與屬性管理
+- 📊 即時數據視覺化
+- 🎯 智能配點建議
+- 📱 響應式設計，支援多種裝置
 
-**Prerequisites:**  Node.js
+## 技術棧
 
+- **框架**: React 19.2.1
+- **語言**: TypeScript 5.8.2
+- **構建工具**: Vite 6.2.0
+- **UI 組件**: Lucide React
+- **圖表**: Recharts
+- **樣式**: Tailwind CSS
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 本地開發
+
+### 前置需求
+
+- Node.js 18+ 
+- npm 或 yarn
+
+### 安裝步驟
+
+1. 克隆儲存庫：
+   ```bash
+   git clone https://github.com/<your-username>/26cm.git
+   cd 26cm
+   ```
+
+2. 安裝依賴：
+   ```bash
+   npm install
+   ```
+
+3. 設定環境變數（如需要）：
+   在根目錄創建 `.env.local` 文件並設定 `GEMINI_API_KEY`
+
+4. 啟動開發伺服器：
+   ```bash
+   npm run dev
+   ```
+
+5. 在瀏覽器中打開 `http://localhost:3000`
+
+## 打包部署
+
+### 構建生產版本
+
+```bash
+npm run build
+```
+
+構建完成後，產物會生成在 `dist` 目錄。
+
+### 預覽生產版本
+
+```bash
+npm run preview
+```
+
+### GitHub Pages 部署
+
+專案已配置為可直接部署到 GitHub Pages：
+
+1. 確保 `vite.config.ts` 中的 `base` 設定正確（已設為 `/26cm/`）
+2. 執行構建命令
+3. 將 `dist` 目錄推送到 `gh-pages` 分支或按 GitHub Actions 配置自動部署
+
+## 專案結構
+
+```
+26cm/
+├── components/          # React 組件
+│   ├── CharacterSelector.tsx
+│   ├── ShardSummary.tsx
+│   └── StatControl.tsx
+├── App.tsx             # 主應用組件
+├── index.tsx           # 應用入口
+├── constants.ts        # 常量定義
+├── types.ts            # TypeScript 類型定義
+├── vite.config.ts      # Vite 配置
+├── tailwind.config.js  # Tailwind 配置
+├── postcss.config.js   # PostCSS 配置
+└── package.json        # 專案依賴
+
+```
+
+## 授權
+
+MIT License
+
+## 相關連結
+
+- AI Studio App: https://ai.studio/apps/drive/1OlHarFO0cPCX8pEenR4CI7cU-3dhlVls
