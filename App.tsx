@@ -340,11 +340,9 @@ const App: React.FC = () => {
                 onClick={() => {
                   setMainLevel(1);
                   setSkillLevels([3, 3, 3]);
-                  setMainCharacter(null);
-                  setSkillCharacters([null, null, null]);
                 }}
                 className="flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full border-2 border-coffee-300 bg-white text-coffee-600 hover:bg-coffee-50 transition-all font-bold text-xs sm:text-base"
-                title="重置所有配置"
+                title="重置等级配置"
               >
                 <RotateCcw size={14} className="sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline whitespace-nowrap">重置</span>
