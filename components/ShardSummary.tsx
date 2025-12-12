@@ -45,8 +45,8 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
       </div>
 
       {/* Chart */}
-      <div className="w-full md:w-64 h-64 relative flex-shrink-0">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="w-full md:w-64 h-64 relative flex-shrink-0 min-w-0">
+        <ResponsiveContainer width="100%" height="100%" minWidth={200} minHeight={200}>
           <PieChart>
             <Pie
               data={data}
