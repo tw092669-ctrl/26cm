@@ -45,31 +45,33 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
       </div>
 
       {/* Chart */}
-      <div className="w-full md:w-64 h-64 relative flex-shrink-0 min-w-0">
-        <ResponsiveContainer width="100%" height="100%" minWidth={200} minHeight={200}>
-          <PieChart>
-            <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              innerRadius={60}
-              outerRadius={80}
-              paddingAngle={5}
-              dataKey="value"
-              stroke="none"
-              cornerRadius={4}
-            >
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
-              ))}
-            </Pie>
-            <Tooltip 
-                formatter={(value: number) => [value, '碎片']}
-                contentStyle={{ backgroundColor: '#FFF', borderColor: '#EAD6A8', color: '#5D4037', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}
-                itemStyle={{ color: '#5D4037', fontWeight: 'bold' }}
-            />
-          </PieChart>
-        </ResponsiveContainer>
+      <div className="w-full md:w-64 h-64 relative flex-shrink-0">
+        <div style={{ width: '100%', height: '100%', minWidth: 256, minHeight: 256 }}>
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={data}
+                cx="50%"
+                cy="50%"
+                innerRadius={60}
+                outerRadius={80}
+                paddingAngle={5}
+                dataKey="value"
+                stroke="none"
+                cornerRadius={4}
+              >
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip 
+                  formatter={(value: number) => [value, '碎片']}
+                  contentStyle={{ backgroundColor: '#FFF', borderColor: '#EAD6A8', color: '#5D4037', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}
+                  itemStyle={{ color: '#5D4037', fontWeight: 'bold' }}
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
         {/* Center Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
             <span className="text-xs text-coffee-400">總計</span>
