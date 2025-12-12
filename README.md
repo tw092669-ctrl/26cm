@@ -33,7 +33,7 @@
 
 1. 克隆儲存庫：
    ```bash
-   git clone https://github.com/<your-username>/26cm.git
+   git clone https://github.com/tw092669-ctrl/26cm.git
    cd 26cm
    ```
 
@@ -70,11 +70,16 @@ npm run preview
 
 ### GitHub Pages 部署
 
-專案已配置為可直接部署到 GitHub Pages：
+專案已配置為可直接部署到 GitHub Pages。
 
-1. 確保 `vite.config.ts` 中的 `base` 設定正確（已設為 `/26cm/`）
-2. 執行構建命令
-3. 將 `dist` 目錄推送到 `gh-pages` 分支或按 GitHub Actions 配置自動部署
+**快速部署**：
+```bash
+npm run deploy
+```
+
+或使用 GitHub Actions 自動部署（推送到 main 分支即可）。
+
+詳細部署說明請參考 [DEPLOYMENT.md](DEPLOYMENT.md)
 
 ## 專案結構
 
