@@ -134,48 +134,53 @@ const App: React.FC = () => {
   };
 
   // Calculate Effective Levels and Multipliers
-  const mainMultiplier = getMainMultiplier(mainLevel);
+  const mainMultiplier = useMemo(() => {
+    const result = getMainMultiplier(mainLevel);
+    console.log('=== 倍率计算调试 ===');
+    console.log('主战等级:', mainLevel, '主战倍率:', result);
+    return result;
+  }, [mainLevel]);
   
-  // Debug logging
-  console.log('=== 倍率计算调试 ===');
-  console.log('主战等级:', mainLevel, '主战倍率:', mainMultiplier);
-  
-  const skillData = skillLevels.map((baseLevel, index) => {
-    const char = skillCharacters[index];
-    const isGen4 = char?.id === 'gen4';
+  const skillData = useMemo(() => {
+    return skillLevels.map((baseLevel, index) => {
+      const char = skillCharacters[index];
+      const isGen4 = char?.id === 'gen4';
 
-    const eternalBonus = isEternalBonusActive ? 1 : 0;
-    
-    // Gen 4 does not receive synergy bonuses
-    const synergyBonus = isGen4 ? 0 : getSynergyBonus(index);
-    
-    // Effective level for multiplier calculation only (not cost)
-    const effectiveLevel = baseLevel + eternalBonus + synergyBonus;
-    
-    let multiplier;
-    if (isGen4) {
-      // Gen 4 Formula: 55% + (Level - 1) * 12%
-      // Level 1 = 55%, Level 19 = 271%
-      multiplier = 55 + (effectiveLevel - 1) * 12;
-    } else {
-      multiplier = getSkillMultiplier(effectiveLevel);
-    }
-    
-    return {
-      baseLevel,
-      effectiveLevel,
-      multiplier,
-      eternalBonus,
-      synergyBonus,
-      isGen4
-    };
-  });
+      const eternalBonus = isEternalBonusActive ? 1 : 0;
+      
+      // Gen 4 does not receive synergy bonuses
+      const synergyBonus = isGen4 ? 0 : getSynergyBonus(index);
+      
+      // Effective level for multiplier calculation only (not cost)
+      const effectiveLevel = baseLevel + eternalBonus + synergyBonus;
+      
+      let multiplier;
+      if (isGen4) {
+        // Gen 4 Formula: 55% + (Level - 1) * 12%
+        // Level 1 = 55%, Level 19 = 271%
+        multiplier = 55 + (effectiveLevel - 1) * 12;
+      } else {
+        multiplier = getSkillMultiplier(effectiveLevel);
+      }
+      
+      return {
+        baseLevel,
+        effectiveLevel,
+        multiplier,
+        eternalBonus,
+        synergyBonus,
+        isGen4
+      };
+    });
+  }, [skillLevels, skillCharacters, isEternalBonusActive, getSynergyBonus]);
 
-  console.log('特技数据:', skillData.map((s, i) => `特技${i+1}: Lv${s.baseLevel} → ${s.multiplier}%`));
-  const totalMultiplier = mainMultiplier + skillData.reduce((acc, s) => acc + s.multiplier, 0);
-  console.log('总倍率:', totalMultiplier, '(主战:', mainMultiplier, '+ 特技总和:', skillData.reduce((acc, s) => acc + s.multiplier, 0), ')');
-  console.log('==================');
-  console.log('Total Multiplier:', totalMultiplier);
+  const totalMultiplier = useMemo(() => {
+    const total = mainMultiplier + skillData.reduce((acc, s) => acc + s.multiplier, 0);
+    console.log('特技数据:', skillData.map((s, i) => `特技${i+1}: Lv${s.baseLevel} → ${s.multiplier}%`));
+    console.log('总倍率:', total, '(主战:', mainMultiplier, '+ 特技总和:', skillData.reduce((acc, s) => acc + s.multiplier, 0), ')');
+    console.log('==================');
+    return total;
+  }, [mainMultiplier, skillData]);
 
   // --- Dynamic Effects Logic ---
   const currentEffects = useMemo(() => {
