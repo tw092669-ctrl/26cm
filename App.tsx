@@ -14,7 +14,7 @@ import { MainRank, Character } from './types';
 import { StatControl } from './components/StatControl';
 import { ShardSummary } from './components/ShardSummary';
 import { CharacterSelector } from './components/CharacterSelector';
-import { Swords, Zap, AlertTriangle, TrendingUp, Calculator, Lock, Unlock, Sparkles } from 'lucide-react';
+import { Swords, Zap, AlertTriangle, TrendingUp, Calculator, Lock, Unlock, Sparkles, RotateCcw } from 'lucide-react';
 
 interface SelectorState {
   isOpen: boolean;
@@ -322,12 +322,12 @@ const App: React.FC = () => {
           {/* Controls Toolbar */}
           <div className="grid grid-cols-2 gap-3 w-full md:flex md:flex-row md:items-center md:justify-between md:gap-4">
             
-            {/* 1. Free Mode Toggle */}
+            {/* 1. Free Mode Toggle & Reset */}
             {/* Desktop: Order 1 (Left), Mobile: Order 2 (Bottom Left) */}
-            <div className="order-2 md:order-1 col-span-1 flex justify-start w-full md:w-auto">
+            <div className="order-2 md:order-1 col-span-1 flex gap-2 justify-start w-full md:w-auto">
               <button
                 onClick={() => setIsFreeMode(!isFreeMode)}
-                className={`flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-5 sm:py-2.5 rounded-full border-2 transition-all w-full md:w-auto font-bold text-xs sm:text-base ${
+                className={`flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-5 sm:py-2.5 rounded-full border-2 transition-all flex-1 md:flex-none font-bold text-xs sm:text-base ${
                   isFreeMode 
                     ? 'bg-purple-100 border-purple-400 text-purple-700 shadow-sm' 
                     : 'bg-white border-cream-300 text-coffee-400 hover:bg-cream-100'
@@ -335,6 +335,19 @@ const App: React.FC = () => {
               >
                 {isFreeMode ? <Unlock size={14} className="sm:w-4 sm:h-4" /> : <Lock size={14} className="sm:w-4 sm:h-4" />}
                 <span className="whitespace-nowrap">自由配點</span>
+              </button>
+              <button
+                onClick={() => {
+                  setMainLevel(1);
+                  setSkillLevels([3, 3, 3]);
+                  setMainCharacter(null);
+                  setSkillCharacters([null, null, null]);
+                }}
+                className="flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full border-2 border-coffee-300 bg-white text-coffee-600 hover:bg-coffee-50 transition-all font-bold text-xs sm:text-base"
+                title="重置所有配置"
+              >
+                <RotateCcw size={14} className="sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline whitespace-nowrap">重置</span>
               </button>
             </div>
 
