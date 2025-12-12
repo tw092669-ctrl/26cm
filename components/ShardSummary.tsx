@@ -1,5 +1,5 @@
 import React from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 
 interface ShardSummaryProps {
   totalLimit: number;
@@ -45,33 +45,29 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
       </div>
 
       {/* Chart */}
-      <div className="w-full md:w-64 h-64 relative flex-shrink-0">
-        <div style={{ width: '100%', height: '100%', minWidth: 256, minHeight: 256 }}>
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={data}
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={80}
-                paddingAngle={5}
-                dataKey="value"
-                stroke="none"
-                cornerRadius={4}
-              >
-                {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-              <Tooltip 
-                  formatter={(value: number) => [value, '碎片']}
-                  contentStyle={{ backgroundColor: '#FFF', borderColor: '#EAD6A8', color: '#5D4037', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}
-                  itemStyle={{ color: '#5D4037', fontWeight: 'bold' }}
-              />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+      <div className="w-full md:w-64 h-64 relative flex-shrink-0 flex items-center justify-center">
+        <PieChart width={256} height={256}>
+          <Pie
+            data={data}
+            cx={128}
+            cy={128}
+            innerRadius={60}
+            outerRadius={80}
+            paddingAngle={5}
+            dataKey="value"
+            stroke="none"
+            cornerRadius={4}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+          <Tooltip 
+              formatter={(value: number) => [value, '碎片']}
+              contentStyle={{ backgroundColor: '#FFF', borderColor: '#EAD6A8', color: '#5D4037', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}
+              itemStyle={{ color: '#5D4037', fontWeight: 'bold' }}
+          />
+        </PieChart>
         {/* Center Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
             <span className="text-xs text-coffee-400">總計</span>
