@@ -136,6 +136,10 @@ const App: React.FC = () => {
   // Calculate Effective Levels and Multipliers
   const mainMultiplier = getMainMultiplier(mainLevel);
   
+  // Debug logging
+  console.log('=== 倍率计算调试 ===');
+  console.log('主战等级:', mainLevel, '主战倍率:', mainMultiplier);
+  
   const skillData = skillLevels.map((baseLevel, index) => {
     const char = skillCharacters[index];
     const isGen4 = char?.id === 'gen4';
@@ -167,7 +171,11 @@ const App: React.FC = () => {
     };
   });
 
+  console.log('特技数据:', skillData.map((s, i) => `特技${i+1}: Lv${s.baseLevel} → ${s.multiplier}%`));
   const totalMultiplier = mainMultiplier + skillData.reduce((acc, s) => acc + s.multiplier, 0);
+  console.log('总倍率:', totalMultiplier, '(主战:', mainMultiplier, '+ 特技总和:', skillData.reduce((acc, s) => acc + s.multiplier, 0), ')');
+  console.log('==================');
+  console.log('Total Multiplier:', totalMultiplier);
 
   // --- Dynamic Effects Logic ---
   const currentEffects = useMemo(() => {
