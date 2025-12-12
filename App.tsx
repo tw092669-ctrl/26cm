@@ -334,7 +334,7 @@ const App: React.FC = () => {
                 </div>
                 <div>
                     <span className="text-[10px] sm:text-xs text-blue-400 uppercase font-bold tracking-wider block leading-none">總倍率</span>
-                    <span className="text-lg sm:text-xl font-mono font-bold text-blue-600 leading-none">{totalMultiplier}%</span>
+                    <span className="text-lg sm:text-xl font-mono font-bold text-blue-600 leading-none">{Math.round(totalMultiplier)}%</span>
                 </div>
               </div>
             </div>

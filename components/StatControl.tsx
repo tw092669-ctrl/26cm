@@ -143,7 +143,7 @@ export const StatControl: React.FC<StatControlProps> = ({
 
       {/* Multiplier (Subtle) */}
       <div className="text-[10px] lg:text-xs text-coffee-400 mb-1 lg:mb-3 font-mono bg-cream-100 px-1.5 py-0.5 rounded">
-          {multiplier}%
+          {Math.round(multiplier)}%
       </div>
 
       {/* Control Buttons */}
