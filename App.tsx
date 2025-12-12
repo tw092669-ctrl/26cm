@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { 
   MAIN_BATTLE_COSTS, 
   SKILL_COSTS, 
@@ -98,7 +98,7 @@ const App: React.FC = () => {
   const isEternalBonusActive = mainLevel === 15;
   const isSynergyUnlocked = mainLevel >= 8;
 
-  const getSynergyBonus = (selfIndex: number) => {
+  const getSynergyBonus = useCallback((selfIndex: number) => {
     if (!isSynergyUnlocked) return 0;
 
     const myLevel = skillLevels[selfIndex];
@@ -131,7 +131,7 @@ const App: React.FC = () => {
       }
     });
     return maxBonus;
-  };
+  }, [isSynergyUnlocked, skillLevels, skillCharacters]);
 
   // Calculate Effective Levels and Multipliers
   const mainMultiplier = useMemo(() => {
