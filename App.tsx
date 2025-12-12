@@ -39,7 +39,7 @@ const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("300");
   
   // Level State
-  const [mainLevel, setMainLevel] = useState<number>(0);
+  const [mainLevel, setMainLevel] = useState<number>(1);
   const [skillLevels, setSkillLevels] = useState<number[]>([3, 3, 3]);
 
   const [mainCharacter, setMainCharacter] = useState<Character | null>(null);
