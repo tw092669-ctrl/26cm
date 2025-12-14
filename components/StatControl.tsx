@@ -125,20 +125,27 @@ export const StatControl: React.FC<StatControlProps> = ({
           {(() => {
             const levelNum = parseInt(badgeText.match(/\d+/)?.[0] || '0');
             const rankType = badgeText.includes('金') ? 'gold' : badgeText.includes('紅') ? 'red' : 'eternal';
-            const starColors = {
-              gold: 'text-yellow-400',
-              red: 'text-pink-500',
-              eternal: 'text-purple-500'
-            };
             const bgColors = {
-              gold: 'bg-yellow-50',
-              red: 'bg-pink-50',
-              eternal: 'bg-purple-50'
+              gold: 'bg-cream-100',
+              red: 'bg-cream-100',
+              eternal: 'bg-cream-100'
             };
             return (
-              <div className={`flex gap-0.5 px-2 py-1 rounded-full ${bgColors[rankType]} border border-white shadow-md`}>
+              <div className={`flex gap-0.5 px-2 py-1 rounded-full ${bgColors[rankType]} border border-cream-300 shadow-md`}>
                 {[...Array(levelNum)].map((_, i) => (
-                  <Star key={i} className={`w-3 h-3 lg:w-4 lg:h-4 ${starColors[rankType]} fill-current`} />
+                  rankType === 'eternal' ? (
+                    <svg key={i} className="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id={`star-gradient-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" style={{stopColor: '#a855f7', stopOpacity: 1}} />
+                          <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
+                        </linearGradient>
+                      </defs>
+                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill={`url(#star-gradient-${i})`} />
+                    </svg>
+                  ) : (
+                    <Star key={i} className={`w-3 h-3 lg:w-4 lg:h-4 ${rankType === 'gold' ? 'text-yellow-400' : 'text-pink-500'} fill-current`} />
+                  )
                 ))}
               </div>
             );
