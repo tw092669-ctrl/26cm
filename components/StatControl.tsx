@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, Minus, Lock, Repeat } from 'lucide-react';
+import { Plus, Minus, Lock, Repeat, Star } from 'lucide-react';
 import { Character } from '../types';
 
 interface StatControlProps {
@@ -109,14 +109,32 @@ export const StatControl: React.FC<StatControlProps> = ({
             <Repeat className="w-3 h-3 lg:w-3.5 lg:h-3.5" strokeWidth={3} />
         </button>
 
-        {/* Level Badge - Adjusted position when mainBonus is present */}
+        {/* Level Badge - Stars for main, text for skills */}
         <div className={`absolute ${isMain && mainBonus ? 'bottom-5 lg:bottom-7' : 'bottom-0'} left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 flex flex-col items-center w-full`}>
            {isMain ? (
-               // Diamond shape for Main
-               <div className="relative flex items-center justify-center">
-                   <div className="bg-rank-badge text-white font-bold text-xs lg:text-base px-2 lg:px-3 py-0.5 rounded-md lg:rounded-lg border lg:border-2 border-white shadow-md min-w-[2rem] lg:min-w-[3rem] text-center transform rotate-0">
-                       {badgeText}
-                   </div>
+               // Stars for Main Battle
+               <div className="flex flex-col gap-0.5">
+                 {(() => {
+                   const levelNum = parseInt(badgeText.match(/\d+/)?.[0] || '0');
+                   const rankType = badgeText.includes('金') ? 'gold' : badgeText.includes('紅') ? 'red' : 'eternal';
+                   const starColors = {
+                     gold: 'text-yellow-400',
+                     red: 'text-pink-500',
+                     eternal: 'text-purple-500'
+                   };
+                   const bgColors = {
+                     gold: 'bg-yellow-50',
+                     red: 'bg-pink-50',
+                     eternal: 'bg-purple-50'
+                   };
+                   return (
+                     <div className={`flex gap-0.5 px-1.5 py-0.5 rounded-full ${bgColors[rankType]} border border-white shadow-md`}>
+                       {[...Array(levelNum)].map((_, i) => (
+                         <Star key={i} className={`w-2.5 h-2.5 lg:w-3 lg:h-3 ${starColors[rankType]} fill-current`} />
+                       ))}
+                     </div>
+                   );
+                 })()}
                </div>
            ) : (
                // Pill shape for Skills
