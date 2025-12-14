@@ -132,21 +132,45 @@ export const StatControl: React.FC<StatControlProps> = ({
             };
             return (
               <div className={`flex gap-0.5 px-2 py-1 rounded-full ${bgColors[rankType]} border border-cream-300 shadow-md`}>
-                {[...Array(levelNum)].map((_, i) => (
-                  rankType === 'eternal' ? (
-                    <svg key={i} className="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id={`star-gradient-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" style={{stopColor: '#a855f7', stopOpacity: 1}} />
-                          <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
-                        </linearGradient>
-                      </defs>
-                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill={`url(#star-gradient-${i})`} />
-                    </svg>
-                  ) : (
-                    <Star key={i} className={`w-3 h-3 lg:w-4 lg:h-4 ${rankType === 'gold' ? 'text-yellow-400' : 'text-pink-500'} fill-current`} />
-                  )
-                ))}
+                {[...Array(levelNum)].map((_, i) => {
+                  if (rankType === 'eternal') {
+                    return (
+                      <svg key={i} className="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id={`star-eternal-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style={{stopColor: '#a855f7', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
+                          </linearGradient>
+                        </defs>
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill={`url(#star-eternal-${i})`} />
+                      </svg>
+                    );
+                  } else if (rankType === 'gold') {
+                    return (
+                      <svg key={i} className="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id={`star-gold-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
+                          </linearGradient>
+                        </defs>
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill={`url(#star-gold-${i})`} />
+                      </svg>
+                    );
+                  } else {
+                    return (
+                      <svg key={i} className="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id={`star-red-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style={{stopColor: '#fbcfe8', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#ec4899', stopOpacity: 1}} />
+                          </linearGradient>
+                        </defs>
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill={`url(#star-red-${i})`} />
+                      </svg>
+                    );
+                  }
+                })}
               </div>
             );
           })()}
@@ -177,12 +201,12 @@ export const StatControl: React.FC<StatControlProps> = ({
       </div>
 
       {/* Multiplier (Subtle) */}
-      <div className="text-[10px] lg:text-xs text-coffee-400 mb-1 lg:mb-3 font-mono bg-cream-100 px-1.5 py-0.5 rounded min-h-[1.25rem] lg:min-h-[1.5rem] flex items-center justify-center">
+      <div className="text-[10px] lg:text-xs text-coffee-400 mb-1 lg:mb-3 font-mono bg-cream-100 px-1.5 py-0.5 rounded h-[1.25rem] lg:h-[1.5rem] flex items-center justify-center">
           {Math.round(multiplier)}%
       </div>
 
       {/* Control Buttons */}
-      <div className="flex items-center gap-0.5 lg:gap-2 bg-cream-100 p-1 lg:p-1.5 rounded-full border border-cream-300 shadow-inner w-full justify-between max-w-[100px] lg:max-w-none min-h-[2rem] lg:min-h-[2.5rem]">
+      <div className="flex items-center gap-0.5 lg:gap-2 bg-cream-100 p-1 lg:p-1.5 rounded-full border border-cream-300 shadow-inner w-full justify-between max-w-[100px] lg:max-w-none h-[2rem] lg:h-[2.5rem]">
         <button
           onClick={onDecrease}
           disabled={!canDecrease}
@@ -216,7 +240,7 @@ export const StatControl: React.FC<StatControlProps> = ({
       </div>
 
       {/* Used Cost (Subtle) */}
-      <div className="mt-1 lg:mt-2 text-[8px] lg:text-[10px] text-coffee-400 min-h-[0.875rem] lg:min-h-[1rem]">
+      <div className="mt-1 lg:mt-2 text-[8px] lg:text-[10px] text-coffee-400 h-[0.875rem] lg:h-[1rem] flex items-center justify-center">
          已用: {currentCost}
       </div>
 
