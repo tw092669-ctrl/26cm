@@ -144,7 +144,9 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
                         className="text-xl font-bold" 
                         style={{ 
                           color: group.main?.color || group.skill?.color || '#5D4037',
-                          textShadow: '1px 1px 2px rgba(0,0,0,0.3), -1px -1px 2px rgba(0,0,0,0.3), 1px -1px 2px rgba(0,0,0,0.3), -1px 1px 2px rgba(0,0,0,0.3)'
+                          ...(((group.main?.color || group.skill?.color) === '#f3f4f6') && {
+                            textShadow: '1px 1px 2px rgba(0,0,0,0.3), -1px -1px 2px rgba(0,0,0,0.3), 1px -1px 2px rgba(0,0,0,0.3), -1px 1px 2px rgba(0,0,0,0.3)'
+                          })
                         }}
                       >
                         {Math.round(group.total)}
