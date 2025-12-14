@@ -54,13 +54,16 @@ const App: React.FC = () => {
     return MAIN_BATTLE_COSTS[mainLevel - 1].cumulativeCost;
   }, [mainLevel]);
 
-  const currentTotalSkillCost = useMemo(() => {
-    return skillLevels.reduce((total, level, index) => {
-      // If the character is Gen 4 (id='gen4'), it costs 0
-      if (skillCharacters[index]?.id === 'gen4') return total;
-      return total + SKILL_COSTS[level - 1].cumulativeCost;
-    }, 0);
+  const skillCosts = useMemo(() => {
+    return skillLevels.map((level, index) => {
+      if (skillCharacters[index]?.id === 'gen4') return 0;
+      return SKILL_COSTS[level - 1].cumulativeCost;
+    });
   }, [skillLevels, skillCharacters]);
+
+  const currentTotalSkillCost = useMemo(() => {
+    return skillCosts.reduce((total, cost) => total + cost, 0);
+  }, [skillCosts]);
 
   // Auto-calculate total shards in Free Mode
   useEffect(() => {
@@ -543,6 +546,7 @@ const App: React.FC = () => {
           usedSkill={currentTotalSkillCost}
           mainCharacter={mainCharacter}
           skillCharacters={skillCharacters}
+          skillCosts={skillCosts}
         />
 
         {/* Reference Data Table */}

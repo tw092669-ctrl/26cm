@@ -8,6 +8,7 @@ interface ShardSummaryProps {
   usedSkill: number;
   mainCharacter: Character | null;
   skillCharacters: (Character | null)[];
+  skillCosts: number[];
 }
 
 export const ShardSummary: React.FC<ShardSummaryProps> = ({
@@ -15,7 +16,8 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
   usedMain,
   usedSkill,
   mainCharacter,
-  skillCharacters
+  skillCharacters,
+  skillCosts
 }) => {
   const [activeTab, setActiveTab] = useState<'summary' | 'characters'>('summary');
   const remaining = Math.max(0, totalLimit - usedMain - usedSkill);
@@ -48,8 +50,8 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
       }
     }
     
-    // Add skill characters
-    skillCharacters.forEach((char) => {
+    // Add skill characters with their actual costs
+    skillCharacters.forEach((char, index) => {
       if (char) {
         const color = getColorGroup(char.id);
         if (color) {
@@ -57,7 +59,7 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
             colorGroups[color] = { main: null, skill: null, total: 0, mainCount: 0, skillCount: 0 };
           }
           colorGroups[color].skill = char;
-          const skillCost = usedSkill / 3; // Approximate equal distribution
+          const skillCost = skillCosts[index] || 0;
           colorGroups[color].total += skillCost;
           colorGroups[color].skillCount += skillCost;
         }
@@ -68,7 +70,7 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
     return Object.entries(colorGroups)
       .map(([color, data]) => ({ color, ...data }))
       .sort((a, b) => b.total - a.total);
-  }, [mainCharacter, skillCharacters, usedMain, usedSkill]);
+  }, [mainCharacter, skillCharacters, usedMain, skillCosts]);
   
   const data = [
     { name: '主戰', value: usedMain, color: '#F59E0B' }, // Amber-500
