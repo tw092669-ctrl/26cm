@@ -541,6 +541,8 @@ const App: React.FC = () => {
           totalLimit={totalShards}
           usedMain={currentMainCost}
           usedSkill={currentTotalSkillCost}
+          mainCharacter={mainCharacter}
+          skillCharacters={skillCharacters}
         />
 
         {/* Reference Data Table */}
