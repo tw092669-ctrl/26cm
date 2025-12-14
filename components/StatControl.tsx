@@ -181,7 +181,7 @@ export const StatControl: React.FC<StatControlProps> = ({
       {!isMain && <div className="h-3 lg:h-4"></div>}
 
       {/* Character Name & Bonuses */}
-      <div className="text-center mb-1 lg:mb-2 w-full min-h-[2.5rem] lg:min-h-[3rem]">
+      <div className="text-center mb-0.5 lg:mb-2 w-full min-h-[2.5rem] lg:min-h-[3rem]">
         <div className={`font-bold text-coffee-800 truncate px-1 ${isMain ? 'text-xs lg:text-xl' : 'text-[10px] lg:text-base'}`}>
             {character ? character.name : (showCharacterName ? "未選擇" : title)}
         </div>
