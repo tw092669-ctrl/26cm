@@ -25,6 +25,7 @@ interface StatControlProps {
   multiplier: number;
   eternalBonusActive?: boolean; // Green +1
   synergyBonusCount?: number;   // Yellow +1
+  mainBonus?: number; // Main battle bonus number (+2, +4, +6, +7, +8)
 }
 
 export const StatControl: React.FC<StatControlProps> = ({
@@ -44,7 +45,8 @@ export const StatControl: React.FC<StatControlProps> = ({
   isMain = false,
   multiplier,
   eternalBonusActive = false,
-  synergyBonusCount = 0
+  synergyBonusCount = 0,
+  mainBonus
 }) => {
   
   // Extract just the number or short text for the badge
@@ -90,6 +92,13 @@ export const StatControl: React.FC<StatControlProps> = ({
              <div className="absolute inset-0 rounded-full border-2 lg:border-4 border-white/30 pointer-events-none"></div>
           )}
         </button>
+        
+        {/* Main Battle Bonus Badge - Positioned below avatar like in the image */}
+        {isMain && mainBonus && (
+          <div className="absolute -bottom-1 lg:-bottom-2 left-1/2 transform -translate-x-1/2 z-30 bg-gradient-to-br from-orange-400 to-orange-500 text-white font-black text-xs lg:text-base px-2 lg:px-3 py-1 lg:py-1.5 rounded-full shadow-lg border-2 border-white">
+            +{mainBonus}
+          </div>
+        )}
 
         {/* Change Icon (Blue Circle with Arrows) */}
         <button 
@@ -100,8 +109,8 @@ export const StatControl: React.FC<StatControlProps> = ({
             <Repeat className="w-3 h-3 lg:w-3.5 lg:h-3.5" strokeWidth={3} />
         </button>
 
-        {/* Level Badge */}
-        <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 flex flex-col items-center w-full`}>
+        {/* Level Badge - Adjusted position when mainBonus is present */}
+        <div className={`absolute ${isMain && mainBonus ? 'bottom-5 lg:bottom-7' : 'bottom-0'} left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 flex flex-col items-center w-full`}>
            {isMain ? (
                // Diamond shape for Main
                <div className="relative flex items-center justify-center">
@@ -118,8 +127,8 @@ export const StatControl: React.FC<StatControlProps> = ({
         </div>
       </div>
 
-      {/* Spacer for badge overflow */}
-      <div className={`${isMain ? 'h-4 lg:h-6' : 'h-3 lg:h-4'}`}></div>
+      {/* Spacer for badge overflow - Extra space when mainBonus is present */}
+      <div className={`${isMain && mainBonus ? 'h-8 lg:h-10' : isMain ? 'h-4 lg:h-6' : 'h-3 lg:h-4'}`}></div>
 
       {/* Character Name & Bonuses */}
       <div className="text-center mb-1 lg:mb-2 w-full">

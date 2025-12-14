@@ -141,6 +141,16 @@ const App: React.FC = () => {
     return result;
   }, [mainLevel]);
   
+  // Calculate main battle bonus number based on multiplier
+  const mainBonus = useMemo(() => {
+    if (mainMultiplier === 400) return 2;
+    if (mainMultiplier === 520) return 4;
+    if (mainMultiplier === 640) return 6;
+    if (mainMultiplier === 700) return 7;
+    if (mainMultiplier === 760) return 8;
+    return undefined;
+  }, [mainMultiplier]);
+  
   const skillData = useMemo(() => {
     return skillLevels.map((baseLevel, index) => {
       const char = skillCharacters[index];
@@ -440,6 +450,7 @@ const App: React.FC = () => {
                         showCharacterName={true}
                         isMain={true}
                         multiplier={mainMultiplier}
+                        mainBonus={mainBonus}
                     />
                 </div>
               </div>
