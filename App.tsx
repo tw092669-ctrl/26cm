@@ -39,7 +39,7 @@ const App: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("300");
   
   // Level State
-  const [mainLevel, setMainLevel] = useState<number>(1);
+  const [mainLevel, setMainLevel] = useState<number>(8);
   const [skillLevels, setSkillLevels] = useState<number[]>([3, 3, 3]);
 
   const [mainCharacter, setMainCharacter] = useState<Character | null>(null);
@@ -338,7 +338,7 @@ const App: React.FC = () => {
               </button>
               <button
                 onClick={() => {
-                  setMainLevel(1);
+                  setMainLevel(8);
                   setSkillLevels([3, 3, 3]);
                 }}
                 className="flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full border-2 border-coffee-300 bg-white text-coffee-600 hover:bg-coffee-50 transition-all font-bold text-xs sm:text-base"
