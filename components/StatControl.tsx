@@ -157,12 +157,12 @@ export const StatControl: React.FC<StatControlProps> = ({
       {!isMain && <div className="h-3 lg:h-4"></div>}
 
       {/* Character Name & Bonuses */}
-      <div className="text-center mb-1 lg:mb-2 w-full">
+      <div className="text-center mb-1 lg:mb-2 w-full min-h-[2.5rem] lg:min-h-[3rem]">
         <div className={`font-bold text-coffee-800 truncate px-1 ${isMain ? 'text-xs lg:text-xl' : 'text-[10px] lg:text-base'}`}>
             {character ? character.name : (showCharacterName ? "未選擇" : title)}
         </div>
         {/* Bonus Indicators */}
-        <div className="flex gap-0.5 lg:gap-1 justify-center mt-0.5 lg:mt-1 h-4 lg:h-5">
+        <div className="flex gap-0.5 lg:gap-1 justify-center mt-0.5 lg:mt-1 min-h-[1rem] lg:min-h-[1.25rem]">
             {eternalBonusActive && (
                 <span className="bg-green-100 text-green-600 text-[8px] lg:text-[10px] font-bold px-1 lg:px-1.5 rounded-full border border-green-200 flex items-center">
                     +1
@@ -177,12 +177,12 @@ export const StatControl: React.FC<StatControlProps> = ({
       </div>
 
       {/* Multiplier (Subtle) */}
-      <div className="text-[10px] lg:text-xs text-coffee-400 mb-1 lg:mb-3 font-mono bg-cream-100 px-1.5 py-0.5 rounded">
+      <div className="text-[10px] lg:text-xs text-coffee-400 mb-1 lg:mb-3 font-mono bg-cream-100 px-1.5 py-0.5 rounded min-h-[1.25rem] lg:min-h-[1.5rem] flex items-center justify-center">
           {Math.round(multiplier)}%
       </div>
 
       {/* Control Buttons */}
-      <div className="flex items-center gap-0.5 lg:gap-2 bg-cream-100 p-1 lg:p-1.5 rounded-full border border-cream-300 shadow-inner w-full justify-between max-w-[100px] lg:max-w-none">
+      <div className="flex items-center gap-0.5 lg:gap-2 bg-cream-100 p-1 lg:p-1.5 rounded-full border border-cream-300 shadow-inner w-full justify-between max-w-[100px] lg:max-w-none min-h-[2rem] lg:min-h-[2.5rem]">
         <button
           onClick={onDecrease}
           disabled={!canDecrease}
@@ -216,7 +216,7 @@ export const StatControl: React.FC<StatControlProps> = ({
       </div>
 
       {/* Used Cost (Subtle) */}
-      <div className="mt-1 lg:mt-2 text-[8px] lg:text-[10px] text-coffee-400">
+      <div className="mt-1 lg:mt-2 text-[8px] lg:text-[10px] text-coffee-400 min-h-[0.875rem] lg:min-h-[1rem]">
          已用: {currentCost}
       </div>
 
