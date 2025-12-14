@@ -19,7 +19,7 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
   skillCharacters,
   skillCosts
 }) => {
-  const [activeTab, setActiveTab] = useState<'summary' | 'characters'>('summary');
+  const [activeTab, setActiveTab] = useState<'summary' | 'characters'>('characters');
   const remaining = Math.max(0, totalLimit - usedMain - usedSkill);
   
   // Calculate character shard totals
@@ -87,16 +87,6 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
             {/* Tab Header */}
             <div className="flex gap-2 mb-4 border-b border-cream-200">
               <button
-                onClick={() => setActiveTab('summary')}
-                className={`px-4 py-2 font-bold transition-colors ${
-                  activeTab === 'summary'
-                    ? 'text-coffee-800 border-b-2 border-amber-500'
-                    : 'text-coffee-400 hover:text-coffee-600'
-                }`}
-              >
-                分配概況
-              </button>
-              <button
                 onClick={() => setActiveTab('characters')}
                 className={`px-4 py-2 font-bold transition-colors ${
                   activeTab === 'characters'
@@ -106,24 +96,19 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
               >
                 角色統計
               </button>
+              <button
+                onClick={() => setActiveTab('summary')}
+                className={`px-4 py-2 font-bold transition-colors ${
+                  activeTab === 'summary'
+                    ? 'text-coffee-800 border-b-2 border-amber-500'
+                    : 'text-coffee-400 hover:text-coffee-600'
+                }`}
+              >
+                分配概況
+              </button>
             </div>
             
-            {activeTab === 'summary' ? (
-              <div className="space-y-3">
-                <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-amber-500">
-                    <span className="text-coffee-600 font-medium">主戰消耗</span>
-                    <span className="text-xl font-bold text-amber-500">{usedMain}</span>
-                </div>
-                <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-blue-400">
-                    <span className="text-coffee-600 font-medium">特技消耗</span>
-                    <span className="text-xl font-bold text-blue-500">{usedSkill}</span>
-                </div>
-                <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-stone-400">
-                    <span className="text-coffee-600 font-medium">剩餘可用</span>
-                    <span className={`text-xl font-bold ${remaining < 0 ? 'text-red-500' : 'text-stone-500'}`}>{remaining}</span>
-                </div>
-              </div>
-            ) : (
+            {activeTab === 'characters' ? (
               <div className="space-y-3">
                 {characterShardStats.length > 0 ? (
                   characterShardStats.map((group) => (
@@ -171,6 +156,21 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
                     尚未選擇角色
                   </div>
                 )}
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-amber-500">
+                    <span className="text-coffee-600 font-medium">主戰消耗</span>
+                    <span className="text-xl font-bold text-amber-500">{usedMain}</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-blue-400">
+                    <span className="text-coffee-600 font-medium">特技消耗</span>
+                    <span className="text-xl font-bold text-blue-500">{usedSkill}</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-stone-400">
+                    <span className="text-coffee-600 font-medium">剩餘可用</span>
+                    <span className={`text-xl font-bold ${remaining < 0 ? 'text-red-500' : 'text-stone-500'}`}>{remaining}</span>
+                </div>
               </div>
             )}
         </div>
