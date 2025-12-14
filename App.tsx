@@ -241,9 +241,7 @@ const App: React.FC = () => {
 
     // Dynamic effects for Purple1 (秋日影)
     if (mainCharacter.id === 'purple1') {
-      if (activeSkillIds.includes('white2')) {
-        list.push({ text: '增益效果改為只有“巧爆”傷害出現時才重置', type: 'combo' });
-      }
+
       if (activeSkillIds.includes('pink2')) {
         list.push({ text: '覺醒持續超過5秒後，能夠主動點擊覺醒按鈕關閉覺醒，並根據剩餘時間百分比返還充能進度', type: 'combo' });
       }
@@ -251,9 +249,7 @@ const App: React.FC = () => {
 
     // Dynamic effects for Black1 (輕飄飄時間)
     if (mainCharacter.id === 'black1') {
-      if (activeSkillIds.includes('white2')) {
-        list.push({ text: '增益效果改為只有“巧爆”傷害出現時才重置', type: 'combo' });
-      }
+
       if (activeSkillIds.includes('pink2')) {
         list.push({ text: '開啟覺醒激活「狂熱鼓點」：我方成員累計對當前目標造成600次傷害後，接下來20秒內，我方成員造成傷害額外提高15%', type: 'combo' });
       }
