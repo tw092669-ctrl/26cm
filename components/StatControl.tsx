@@ -151,7 +151,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                         <defs>
                           <linearGradient id={`star-gold-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
-                            <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#ca8a04', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
                         <path d="M12 4L15 9L12 11L9 9L12 4Z M12 13L15 15L12 20L9 15L12 13Z M15 9L20 12L15 15L13 12L15 9Z M9 12L9 15L4 12L9 9L9 12Z M9 9L15 9L15 15L9 15Z" fill={`url(#star-gold-${i})`} />
@@ -162,8 +162,8 @@ export const StatControl: React.FC<StatControlProps> = ({
                       <svg key={i} className="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-red-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style={{stopColor: '#fbcfe8', stopOpacity: 1}} />
-                            <stop offset="100%" style={{stopColor: '#ec4899', stopOpacity: 1}} />
+                            <stop offset="0%" style={{stopColor: '#fecaca', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#dc2626', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
                         <path d="M12 4L15 9L12 11L9 9L12 4Z M12 13L15 15L12 20L9 15L12 13Z M15 9L20 12L15 15L13 12L15 9Z M9 12L9 15L4 12L9 9L9 12Z M9 9L15 9L15 15L9 15Z" fill={`url(#star-red-${i})`} />
