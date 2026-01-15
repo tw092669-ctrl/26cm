@@ -131,15 +131,15 @@ export const StatControl: React.FC<StatControlProps> = ({
               eternal: 'bg-cream-100'
             };
             return (
-              <div className={`flex gap-1 px-2.5 py-1.5 rounded-full ${bgColors[rankType]} border border-cream-300 shadow-md`}>
+              <div className={`flex gap-0.5 px-2.5 py-1.5 rounded-full ${bgColors[rankType]} border border-cream-300 shadow-md`}>
                 {[...Array(levelNum)].map((_, i) => {
                   if (rankType === 'eternal') {
                     return (
-                      <svg key={i} className="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg key={i} className="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-eternal-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style={{stopColor: '#a855f7', stopOpacity: 1}} />
-                            <stop offset="50%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
+                            <stop offset="50%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
                             <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
@@ -148,7 +148,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                     );
                   } else if (rankType === 'gold') {
                     return (
-                      <svg key={i} className="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg key={i} className="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-gold-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
@@ -160,7 +160,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                     );
                   } else {
                     return (
-                      <svg key={i} className="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg key={i} className="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-red-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style={{stopColor: '#fecaca', stopOpacity: 1}} />
