@@ -88,7 +88,7 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
             <div className="flex gap-2 mb-4 border-b-2 border-cream-200">
               <button
                 onClick={() => setActiveTab('characters')}
-                className={`px-4 py-2 font-bold transition-all rounded-t-lg ${
+                className={`px-4 py-2 font-extrabold transition-all rounded-t-lg text-base ${
                   activeTab === 'characters'
                     ? 'text-ui-coral border-b-2 border-ui-coral bg-ui-coral/5'
                     : 'text-coffee-400 hover:text-coffee-600 hover:bg-cream-50'
@@ -98,7 +98,7 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
               </button>
               <button
                 onClick={() => setActiveTab('summary')}
-                className={`px-4 py-2 font-bold transition-all rounded-t-lg ${
+                className={`px-4 py-2 font-extrabold transition-all rounded-t-lg text-base ${
                   activeTab === 'summary'
                     ? 'text-ui-teal border-b-2 border-ui-teal bg-ui-teal/5'
                     : 'text-coffee-400 hover:text-coffee-600 hover:bg-cream-50'
@@ -162,15 +162,15 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
             ) : (
               <div className="space-y-3">
                 <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-amber-500">
-                    <span className="text-coffee-600 font-medium">主戰消耗</span>
+                    <span className="text-coffee-600 font-extrabold text-base">主戰消耗</span>
                     <span className="text-xl font-bold text-amber-500">{usedMain}</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-blue-400">
-                    <span className="text-coffee-600 font-medium">特技消耗</span>
+                    <span className="text-coffee-600 font-extrabold text-base">特技消耗</span>
                     <span className="text-xl font-bold text-blue-500">{usedSkill}</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-stone-400">
-                    <span className="text-coffee-600 font-medium">剩餘可用</span>
+                    <span className="text-coffee-600 font-extrabold text-base">剩餘可用</span>
                     <span className={`text-xl font-bold ${remaining < 0 ? 'text-red-500' : 'text-stone-500'}`}>{remaining}</span>
                 </div>
               </div>

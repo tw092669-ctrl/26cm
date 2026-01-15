@@ -30,7 +30,7 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
       {/* Modal Content */}
       <div className="relative bg-gradient-to-br from-white via-ui-peach/5 to-ui-pink/10 border-2 border-ui-coral/30 rounded-4xl p-6 w-full max-w-md shadow-soft-lg transform transition-all">
         <div className="flex justify-between items-center mb-6">
-          <h3 className="text-xl font-bold bg-gradient-to-r from-ui-coral to-ui-pink bg-clip-text text-transparent">{title}</h3>
+          <h3 className="text-2xl font-extrabold bg-gradient-to-r from-ui-coral to-ui-pink bg-clip-text text-transparent">{title}</h3>
           <button 
             onClick={onClose}
             className="p-2 text-ui-coral hover:text-ui-pink rounded-full hover:bg-ui-coral/10 transition-colors"
@@ -53,7 +53,7 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-sm text-coffee-600 font-bold group-hover:text-ui-coral">{char.name}</span>
+              <span className="text-base text-coffee-600 font-extrabold group-hover:text-ui-coral">{char.name}</span>
             </button>
           ))}
         </div>

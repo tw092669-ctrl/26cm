@@ -56,7 +56,7 @@ export const StatControl: React.FC<StatControlProps> = ({
     <div className={`flex flex-col items-center w-full ${isMain ? 'max-w-none lg:max-w-[280px]' : ''}`}>
       
       {/* Title - Use visibility:hidden for Main to preserve exact spacing of the text node */}
-      <h3 className={`text-coffee-600 font-bold mb-1 lg:mb-2 text-[10px] sm:text-xs lg:text-sm text-center min-h-[1.25rem] ${isMain ? 'invisible' : ''}`}>
+      <h3 className={`text-coffee-600 font-extrabold mb-1 lg:mb-2 text-xs sm:text-sm lg:text-base text-center min-h-[1.25rem] ${isMain ? 'invisible' : ''}`}>
         {title}
       </h3>
 
@@ -112,7 +112,7 @@ export const StatControl: React.FC<StatControlProps> = ({
         {/* Level Badge for Skills only (positioned absolutely) */}
         {!isMain && (
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 flex flex-col items-center w-full">
-            <div className="bg-rank-badge text-white font-bold text-[10px] lg:text-sm px-2 lg:px-3 py-0.5 rounded-full border lg:border-2 border-white shadow-md min-w-[2.5rem] lg:min-w-[3.5rem] text-center">
+            <div className="bg-rank-badge text-white font-extrabold text-xs lg:text-base px-2 lg:px-3 py-0.5 rounded-full border lg:border-2 border-white shadow-md min-w-[2.5rem] lg:min-w-[3.5rem] text-center">
               {badgeText}
             </div>
           </div>
@@ -131,11 +131,11 @@ export const StatControl: React.FC<StatControlProps> = ({
               eternal: 'bg-cream-100'
             };
             return (
-              <div className={`flex gap-0.5 px-2 py-1 rounded-full ${bgColors[rankType]} border border-cream-300 shadow-md`}>
+              <div className={`flex gap-1 px-2.5 py-1.5 rounded-full ${bgColors[rankType]} border border-cream-300 shadow-md`}>
                 {[...Array(levelNum)].map((_, i) => {
                   if (rankType === 'eternal') {
                     return (
-                      <svg key={i} className="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg key={i} className="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-eternal-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style={{stopColor: '#a855f7', stopOpacity: 1}} />
@@ -147,7 +147,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                     );
                   } else if (rankType === 'gold') {
                     return (
-                      <svg key={i} className="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg key={i} className="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-gold-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
@@ -159,7 +159,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                     );
                   } else {
                     return (
-                      <svg key={i} className="w-3 h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg key={i} className="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-red-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style={{stopColor: '#fbcfe8', stopOpacity: 1}} />
@@ -182,18 +182,18 @@ export const StatControl: React.FC<StatControlProps> = ({
 
       {/* Character Name & Bonuses */}
       <div className={`text-center w-full min-h-[2.5rem] lg:min-h-[3rem] ${isMain ? 'mb-0 lg:mb-2' : 'mb-3 lg:mb-2'}`}>
-        <div className={`font-bold text-coffee-800 truncate px-1 ${isMain ? 'text-xs lg:text-xl' : 'text-[10px] lg:text-base'}`}>
+        <div className={`font-extrabold text-coffee-800 truncate px-1 ${isMain ? 'text-sm lg:text-2xl' : 'text-xs lg:text-lg'}`}>
             {character ? character.name : (showCharacterName ? "未選擇" : title)}
         </div>
         {/* Bonus Indicators */}
         <div className="flex gap-0.5 lg:gap-1 justify-center mt-0.5 lg:mt-1 min-h-[1rem] lg:min-h-[1.25rem]">
             {eternalBonusActive && (
-                <span className="bg-green-100 text-green-600 text-[8px] lg:text-[10px] font-bold px-1 lg:px-1.5 rounded-full border border-green-200 flex items-center">
+                <span className="bg-green-100 text-green-600 text-[10px] lg:text-xs font-extrabold px-1 lg:px-1.5 rounded-full border border-green-200 flex items-center">
                     +1
                 </span>
             )}
             {synergyBonusCount > 0 && (
-                <span className="bg-yellow-100 text-yellow-600 text-[8px] lg:text-[10px] font-bold px-1 lg:px-1.5 rounded-full border border-yellow-200 flex items-center">
+                <span className="bg-yellow-100 text-yellow-600 text-[10px] lg:text-xs font-extrabold px-1 lg:px-1.5 rounded-full border border-yellow-200 flex items-center">
                     +{synergyBonusCount}
                 </span>
             )}
@@ -201,7 +201,7 @@ export const StatControl: React.FC<StatControlProps> = ({
       </div>
 
       {/* Multiplier (Subtle) */}
-      <div className="text-[10px] lg:text-xs text-coffee-400 mb-1 lg:mb-3 font-mono bg-cream-100 px-1.5 py-0.5 rounded h-[1.25rem] lg:h-[1.5rem] flex items-center justify-center">
+      <div className="text-xs lg:text-sm text-coffee-400 mb-1 lg:mb-3 font-mono bg-cream-100 px-1.5 py-0.5 rounded h-[1.25rem] lg:h-[1.5rem] flex items-center justify-center font-bold">
           {Math.round(multiplier)}%
       </div>
 
@@ -220,8 +220,8 @@ export const StatControl: React.FC<StatControlProps> = ({
         </button>
 
         <div className="flex flex-col items-center flex-1 min-w-0">
-            <span className="text-[8px] lg:text-[10px] text-coffee-400 uppercase leading-none scale-90 lg:scale-100">COST</span>
-            <span className={`text-xs lg:text-sm font-bold font-mono leading-tight ${nextCost !== null ? (canIncrease ? 'text-coffee-800' : 'text-red-500') : 'text-gray-400'}`}>
+            <span className="text-[10px] lg:text-xs text-coffee-400 uppercase leading-none scale-90 lg:scale-100 font-extrabold">COST</span>
+            <span className={`text-sm lg:text-base font-extrabold font-mono leading-tight ${nextCost !== null ? (canIncrease ? 'text-coffee-800' : 'text-red-500') : 'text-gray-400'}`}>
                 {nextCost !== null ? nextCost : '-'}
             </span>
         </div>
@@ -240,7 +240,7 @@ export const StatControl: React.FC<StatControlProps> = ({
       </div>
 
       {/* Used Cost (Subtle) */}
-      <div className="mt-1 lg:mt-2 text-[8px] lg:text-[10px] text-coffee-400 h-[0.875rem] lg:h-[1rem] flex items-center justify-center">
+      <div className="mt-1 lg:mt-2 text-[10px] lg:text-xs text-coffee-400 h-[0.875rem] lg:h-[1rem] flex items-center justify-center font-bold">
          已用: {currentCost}
       </div>
 

@@ -326,11 +326,11 @@ const App: React.FC = () => {
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-ui-coral to-ui-pink flex items-center justify-center shadow-soft">
                 <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="white" />
               </div>
-              <h1 className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-ui-coral via-ui-pink to-ui-lavender bg-clip-text text-transparent">
+              <h1 className="text-3xl sm:text-5xl font-extrabold bg-gradient-to-r from-ui-coral via-ui-pink to-ui-lavender bg-clip-text text-transparent">
                 五代麥樂獸拼圖配點
               </h1>
             </div>
-            <p className="text-sm sm:text-lg text-coffee-600 mt-1">計算最佳的主戰與特技等級分配</p>
+            <p className="text-base sm:text-xl font-semibold text-coffee-600 mt-1">計算最佳的主戰與特技等級分配</p>
           </div>
           
           {/* Controls Toolbar */}
@@ -347,8 +347,8 @@ const App: React.FC = () => {
                     : 'bg-white border-cream-300 text-coffee-400 hover:bg-cream-50'
                 }`}
               >
-                {isFreeMode ? <Unlock size={14} className="sm:w-4 sm:h-4" /> : <Lock size={14} className="sm:w-4 sm:h-4" />}
-                <span className="whitespace-nowrap">自由配點</span>
+                {isFreeMode ? <Unlock size={16} className="sm:w-5 sm:h-5" /> : <Lock size={16} className="sm:w-5 sm:h-5" />}
+                <span className="whitespace-nowrap font-bold">自由配點</span>
               </button>
               <button
                 onClick={() => {
@@ -358,8 +358,8 @@ const App: React.FC = () => {
                 className="flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full border-2 border-ui-coral/30 bg-white text-ui-coral hover:bg-ui-coral/10 transition-all font-bold text-xs sm:text-base shadow-soft hover:shadow-card"
                 title="重置等级配置"
               >
-                <RotateCcw size={14} className="sm:w-4 sm:h-4" />
-                <span className="hidden sm:inline whitespace-nowrap">重置</span>
+                <RotateCcw size={16} className="sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline whitespace-nowrap font-bold">重置</span>
               </button>
             </div>
 
@@ -371,8 +371,8 @@ const App: React.FC = () => {
                     <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                    <span className="text-[10px] sm:text-xs text-ui-teal uppercase font-bold tracking-wider block leading-none">總倍率</span>
-                    <span className="text-lg sm:text-xl font-mono font-bold bg-gradient-to-r from-ui-teal to-ui-blue bg-clip-text text-transparent leading-none">{Math.round(totalMultiplier)}%</span>
+                    <span className="text-xs sm:text-sm text-ui-teal uppercase font-extrabold tracking-wider block leading-none">總倍率</span>
+                    <span className="text-xl sm:text-3xl font-mono font-black bg-gradient-to-r from-ui-teal to-ui-blue bg-clip-text text-transparent leading-none">{Math.round(totalMultiplier)}%</span>
                 </div>
               </div>
             </div>
@@ -384,7 +384,7 @@ const App: React.FC = () => {
                 isFreeMode ? 'bg-purple-50 border-purple-200' : 'bg-white border-cream-300'
               }`}>
                 <div className="text-right flex items-center gap-1 sm:gap-3 justify-between w-full md:w-auto">
-                  <label htmlFor="shardInput" className="text-[10px] sm:text-xs text-coffee-400 uppercase font-bold pl-1 sm:pl-3 flex items-center gap-0.5 sm:gap-1 whitespace-nowrap">
+                  <label htmlFor="shardInput" className="text-xs sm:text-sm text-coffee-400 uppercase font-extrabold pl-1 sm:pl-3 flex items-center gap-0.5 sm:gap-1 whitespace-nowrap">
                     {isFreeMode ? (
                        <>
                          <Calculator size={12} className="sm:hidden" />
@@ -400,7 +400,7 @@ const App: React.FC = () => {
                     value={inputValue}
                     readOnly={isFreeMode}
                     onChange={handleInputChange}
-                    className={`w-16 sm:w-24 text-base sm:text-xl font-mono font-bold outline-none text-right bg-transparent transition-all ${
+                    className={`w-16 sm:w-24 text-lg sm:text-2xl font-mono font-extrabold outline-none text-right bg-transparent transition-all ${
                       isFreeMode 
                         ? 'text-purple-600 cursor-default' 
                         : 'text-coffee-800 border-b-2 border-transparent focus:border-amber-400'
@@ -415,9 +415,9 @@ const App: React.FC = () => {
 
         {/* Warning if over budget */}
         {!isFreeMode && remainingShards < 0 && (
-           <div className="bg-gradient-to-r from-red-50 to-ui-coral/10 border-2 border-ui-coral/40 text-red-700 p-3 sm:p-4 rounded-2xl flex items-center gap-3 shadow-soft text-sm sm:text-base">
-             <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-ui-coral" />
-             <span className="font-medium">碎片不足！需要額外 {Math.abs(remainingShards)} 個碎片。</span>
+           <div className="bg-gradient-to-r from-red-50 to-ui-coral/10 border-2 border-ui-coral/40 text-red-700 p-3 sm:p-4 rounded-2xl flex items-center gap-3 shadow-soft text-base sm:text-lg">
+             <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-ui-coral" />
+             <span className="font-bold">碎片不足！需要額外 {Math.abs(remainingShards)} 個碎片。</span>
            </div>
         )}
 
@@ -433,7 +433,7 @@ const App: React.FC = () => {
                 <div className="hidden lg:block absolute -bottom-10 -right-10 w-40 h-40 bg-ui-coral rounded-full blur-3xl opacity-20"></div>
                 
                 {/* Title - Force flex-row on mobile to match Skills height and alignment */}
-                <h2 className="relative z-10 text-ui-coral font-bold mb-1 lg:mb-4 flex flex-row items-center justify-center gap-1 lg:gap-2 uppercase tracking-widest text-[8px] lg:text-sm text-center">
+                <h2 className="relative z-10 text-ui-coral font-extrabold mb-1 lg:mb-4 flex flex-row items-center justify-center gap-1 lg:gap-2 uppercase tracking-widest text-[10px] lg:text-base text-center">
                     <Swords className="w-3 h-3 lg:w-4 lg:h-4" /> 
                     <span>主戰</span>
                 </h2>
@@ -466,7 +466,7 @@ const App: React.FC = () => {
             <div className="bg-gradient-to-br from-ui-teal/10 via-white to-ui-blue/10 border lg:border-2 border-ui-teal/30 rounded-xl lg:rounded-4xl p-1.5 lg:p-6 shadow-soft-lg h-full relative overflow-hidden">
                 <div className="hidden lg:block absolute -top-10 -right-10 w-32 h-32 bg-ui-blue rounded-full blur-3xl opacity-15"></div>
                 <div className="hidden lg:block absolute -bottom-10 -left-10 w-40 h-40 bg-ui-teal rounded-full blur-3xl opacity-15"></div>
-                <h2 className="text-ui-teal font-bold mb-1 lg:mb-6 flex items-center gap-1 lg:gap-2 uppercase tracking-widest text-[8px] lg:text-sm ml-1 lg:ml-2 relative z-10">
+                <h2 className="text-ui-teal font-extrabold mb-1 lg:mb-6 flex items-center gap-1 lg:gap-2 uppercase tracking-widest text-[10px] lg:text-base ml-1 lg:ml-2 relative z-10">
                     <Zap className="w-3 h-3 lg:w-4 lg:h-4" /> 支援
                 </h2>
                 
@@ -530,11 +530,11 @@ const App: React.FC = () => {
         <div className="bg-gradient-to-r from-ui-lavender/10 via-white to-ui-pink/10 border-2 border-ui-lavender/30 rounded-2xl lg:rounded-4xl p-4 lg:p-6 shadow-soft-lg transition-all relative overflow-hidden">
            <div className="hidden lg:block absolute -top-10 -left-10 w-32 h-32 bg-ui-lavender rounded-full blur-3xl opacity-15"></div>
            <div className="hidden lg:block absolute -bottom-10 -right-10 w-32 h-32 bg-ui-pink rounded-full blur-3xl opacity-15"></div>
-           <h3 className="text-ui-lavender font-bold mb-2 flex items-center gap-2 text-sm lg:text-base relative z-10">
-              <Sparkles className="w-4 h-4 text-ui-lavender" fill="currentColor" /> 
+           <h3 className="text-ui-lavender font-extrabold mb-2 flex items-center gap-2 text-base lg:text-lg relative z-10">
+              <Sparkles className="w-5 h-5 text-ui-lavender" fill="currentColor" /> 
               <span>效果</span>
            </h3>
-           <div className={`text-sm lg:text-base font-medium ${mainCharacter ? 'text-coffee-800' : 'text-coffee-400 italic'}`}>
+           <div className={`text-base lg:text-lg font-semibold ${mainCharacter ? 'text-coffee-800' : 'text-coffee-400 italic'}`}>
              {!mainCharacter ? (
                "請選擇主戰麥樂獸以查看效果"
              ) : (
@@ -560,30 +560,30 @@ const App: React.FC = () => {
         />
 
         {/* Reference Data Table */}
-        <div className="mt-8 border-t-2 border-cream-200 pt-8 hidden sm:block">
-            <h3 className="text-ui-lavender text-sm font-bold mb-4 uppercase tracking-widest text-center">階段參考表</h3>
-            <div className="overflow-x-auto rounded-3xl border-2 border-cream-200 shadow-soft-lg">
-                <table className="w-full text-sm text-left text-coffee-600 bg-white">
-                    <thead className="text-xs text-coffee-500 uppercase bg-gradient-to-r from-cream-100 to-cream-50">
+        <div className="mt-8 border-t-2 border-cream-200 pt-8">
+            <h3 className="text-ui-lavender text-sm sm:text-base font-extrabold mb-4 uppercase tracking-widest text-center">階段參考表</h3>
+            <div className="overflow-x-auto rounded-2xl sm:rounded-3xl border-2 border-cream-200 shadow-soft-lg">
+                <table className="w-full text-xs sm:text-sm text-left text-coffee-600 bg-white">
+                    <thead className="text-[10px] sm:text-xs text-coffee-500 uppercase bg-gradient-to-r from-cream-100 to-cream-50">
                         <tr>
-                            <th className="px-6 py-3 font-bold">階段</th>
-                            <th className="px-6 py-3 font-bold">累計碎片</th>
-                            <th className="px-6 py-3 font-bold">該級成本</th>
-                            <th className="px-6 py-3 font-bold">倍率</th>
+                            <th className="px-2 sm:px-6 py-2 sm:py-3 font-bold">階段</th>
+                            <th className="px-2 sm:px-6 py-2 sm:py-3 font-bold">累計碎片</th>
+                            <th className="px-2 sm:px-6 py-2 sm:py-3 font-bold">該級成本</th>
+                            <th className="px-2 sm:px-6 py-2 sm:py-3 font-bold">倍率</th>
                         </tr>
                     </thead>
                     <tbody>
                         {MAIN_BATTLE_COSTS.map((m) => (
                             <tr key={`main-${m.level}`} className="border-b border-cream-100 hover:bg-gradient-to-r hover:from-ui-coral/5 hover:to-transparent transition-colors">
-                                <td className={`px-6 py-2 font-bold ${
+                                <td className={`px-2 sm:px-6 py-1.5 sm:py-2 font-bold whitespace-nowrap ${
                                     m.rank === MainRank.GOLD ? 'text-ui-gold' : 
                                     m.rank === MainRank.RED ? 'text-ui-coral' : 'text-ui-lavender'
                                 }`}>
                                     {m.label}
                                 </td>
-                                <td className="px-6 py-2">{m.cumulativeCost}</td>
-                                <td className="px-6 py-2">{m.cost}</td>
-                                <td className="px-6 py-2 font-mono text-coffee-400">{getMainMultiplier(m.level)}%</td>
+                                <td className="px-2 sm:px-6 py-1.5 sm:py-2 font-semibold">{m.cumulativeCost}</td>
+                                <td className="px-2 sm:px-6 py-1.5 sm:py-2 font-semibold">{m.cost}</td>
+                                <td className="px-2 sm:px-6 py-1.5 sm:py-2 font-mono font-semibold text-coffee-400">{getMainMultiplier(m.level)}%</td>
                             </tr>
                         ))}
                     </tbody>
@@ -591,7 +591,7 @@ const App: React.FC = () => {
             </div>
         </div>
 
-        <div className="text-center bg-gradient-to-r from-ui-coral via-ui-pink to-ui-lavender bg-clip-text text-transparent text-xs sm:text-sm font-bold pb-8">
+        <div className="text-center bg-gradient-to-r from-ui-coral via-ui-pink to-ui-lavender bg-clip-text text-transparent text-sm sm:text-base font-extrabold pb-8">
           程式製作_by26
         </div>
 
