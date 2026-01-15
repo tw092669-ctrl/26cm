@@ -142,7 +142,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 3L14.5 8L12 10.5L9.5 8L12 3Z M12 13.5L14.5 16L12 21L9.5 16L12 13.5Z M16 9.5L21 12L16 14.5L13.5 12L16 9.5Z M10.5 12L8 14.5L3 12L8 9.5L10.5 12Z" fill={`url(#star-eternal-${i})`} />
+                        <path d="M12 4L15 9L12 11L9 9L12 4Z M12 13L15 15L12 20L9 15L12 13Z M15 9L20 12L15 15L13 12L15 9Z M9 12L9 15L4 12L9 9L9 12Z M9 9L15 9L15 15L9 15Z" fill={`url(#star-eternal-${i})`} />
                       </svg>
                     );
                   } else if (rankType === 'gold') {
@@ -154,7 +154,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 3L14.5 8L12 10.5L9.5 8L12 3Z M12 13.5L14.5 16L12 21L9.5 16L12 13.5Z M16 9.5L21 12L16 14.5L13.5 12L16 9.5Z M10.5 12L8 14.5L3 12L8 9.5L10.5 12Z" fill={`url(#star-gold-${i})`} />
+                        <path d="M12 4L15 9L12 11L9 9L12 4Z M12 13L15 15L12 20L9 15L12 13Z M15 9L20 12L15 15L13 12L15 9Z M9 12L9 15L4 12L9 9L9 12Z M9 9L15 9L15 15L9 15Z" fill={`url(#star-gold-${i})`} />
                       </svg>
                     );
                   } else {
@@ -166,7 +166,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#ec4899', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 3L14.5 8L12 10.5L9.5 8L12 3Z M12 13.5L14.5 16L12 21L9.5 16L12 13.5Z M16 9.5L21 12L16 14.5L13.5 12L16 9.5Z M10.5 12L8 14.5L3 12L8 9.5L10.5 12Z" fill={`url(#star-red-${i})`} />
+                        <path d="M12 4L15 9L12 11L9 9L12 4Z M12 13L15 15L12 20L9 15L12 13Z M15 9L20 12L15 15L13 12L15 9Z M9 12L9 15L4 12L9 9L9 12Z M9 9L15 9L15 15L9 15Z" fill={`url(#star-red-${i})`} />
                       </svg>
                     );
                   }
