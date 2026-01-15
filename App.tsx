@@ -591,8 +591,8 @@ const App: React.FC = () => {
             </div>
         </div>
 
-        <div className="text-center bg-gradient-to-r from-ui-coral via-ui-pink to-ui-lavender bg-clip-text text-transparent text-sm sm:text-base font-extrabold pb-8">
-          程式製作_by26
+        <div className="text-center text-coffee-800 text-sm sm:text-base font-extrabold pb-8">
+          製作_by26
         </div>
 
       </div>
