@@ -139,11 +139,11 @@ export const StatControl: React.FC<StatControlProps> = ({
                         <defs>
                           <linearGradient id={`star-eternal-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style={{stopColor: '#a855f7', stopOpacity: 1}} />
-                            <stop offset="50%" style={{stopColor: '#facc15', stopOpacity: 1}} />
-                            <stop offset="100%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
+                            <stop offset="50%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-eternal-${i})`} stroke="#000" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-eternal-${i})`} stroke="#666" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   } else if (rankType === 'gold') {
@@ -155,7 +155,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#ca8a04', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-gold-${i})`} stroke="#000" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-gold-${i})`} stroke="#666" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   } else {
@@ -167,7 +167,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#dc2626', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-red-${i})`} stroke="#000" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-red-${i})`} stroke="#666" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   }
