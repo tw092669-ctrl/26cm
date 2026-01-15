@@ -138,11 +138,11 @@ export const StatControl: React.FC<StatControlProps> = ({
                       <svg key={i} className="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-eternal-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style={{stopColor: '#ef4444', stopOpacity: 1}} />
+                            <stop offset="0%" style={{stopColor: '#a855f7', stopOpacity: 1}} />
                             <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill={`url(#star-eternal-${i})`} />
+                        <path d="M12 3L14.5 8L12 10.5L9.5 8L12 3Z M12 13.5L14.5 16L12 21L9.5 16L12 13.5Z M16 9.5L21 12L16 14.5L13.5 12L16 9.5Z M10.5 12L8 14.5L3 12L8 9.5L10.5 12Z" fill={`url(#star-eternal-${i})`} />
                       </svg>
                     );
                   } else if (rankType === 'gold') {
@@ -154,7 +154,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill={`url(#star-gold-${i})`} />
+                        <path d="M12 3L14.5 8L12 10.5L9.5 8L12 3Z M12 13.5L14.5 16L12 21L9.5 16L12 13.5Z M16 9.5L21 12L16 14.5L13.5 12L16 9.5Z M10.5 12L8 14.5L3 12L8 9.5L10.5 12Z" fill={`url(#star-gold-${i})`} />
                       </svg>
                     );
                   } else {
@@ -166,7 +166,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#ec4899', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill={`url(#star-red-${i})`} />
+                        <path d="M12 3L14.5 8L12 10.5L9.5 8L12 3Z M12 13.5L14.5 16L12 21L9.5 16L12 13.5Z M16 9.5L21 12L16 14.5L13.5 12L16 9.5Z M10.5 12L8 14.5L3 12L8 9.5L10.5 12Z" fill={`url(#star-red-${i})`} />
                       </svg>
                     );
                   }
