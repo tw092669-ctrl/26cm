@@ -10,15 +10,15 @@ export default {
     extend: {
       colors: {
         cream: {
-          50: '#FDFBF7',
-          100: '#FFF8E7',
-          200: '#FAEBD7',
-          300: '#EAD6A8',
+          50: '#FFF9F5',
+          100: '#FFF3E9',
+          200: '#FFE8D6',
+          300: '#FFD4B0',
         },
         coffee: {
-          400: '#8D6E63',
-          600: '#5D4037',
-          800: '#3E2723',
+          400: '#A78B7A',
+          600: '#6B5B4E',
+          800: '#3E3530',
         },
         rank: {
           gold: '#F59E0B',
@@ -27,8 +27,13 @@ export default {
           badge: '#D35400',
         },
         ui: {
-          blue: '#60A5FA',
+          blue: '#5BA8C6',
           gold: '#FBBF24',
+          coral: '#FF9F8A',
+          pink: '#FFB8C1',
+          teal: '#7FD4C1',
+          peach: '#FFD5B8',
+          lavender: '#C5A8E9',
         }
       },
       fontFamily: {
@@ -37,8 +42,15 @@ export default {
       },
       boxShadow: {
         'card': '0 4px 6px -1px rgba(93, 64, 55, 0.1), 0 2px 4px -1px rgba(93, 64, 55, 0.06)',
+        'card-hover': '0 10px 20px -5px rgba(93, 64, 55, 0.15), 0 4px 8px -2px rgba(93, 64, 55, 0.08)',
+        'soft': '0 2px 15px rgba(0, 0, 0, 0.08)',
+        'soft-lg': '0 4px 25px rgba(0, 0, 0, 0.1)',
         'inner-gold': 'inset 0 0 0 3px #FBBF24',
         'inner-gray': 'inset 0 0 0 2px #E5E7EB',
+      },
+      borderRadius: {
+        '4xl': '2rem',
+        '5xl': '2.5rem',
       }
     },
   },

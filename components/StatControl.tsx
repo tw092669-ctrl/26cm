@@ -66,10 +66,10 @@ export const StatControl: React.FC<StatControlProps> = ({
         {/* Main Avatar Circle - Responsive Sizing */}
         <button 
           onClick={onIconClick}
-          className={`relative rounded-full overflow-hidden shadow-card transition-transform hover:scale-105 active:scale-95 bg-gray-200 border-2 lg:border-4 
+          className={`relative rounded-full overflow-hidden shadow-soft transition-transform hover:scale-105 active:scale-95 bg-gradient-to-br from-gray-100 to-gray-200 border-2 lg:border-4 hover:shadow-card
             ${isMain 
-              ? 'w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 border-ui-gold shadow-[0_0_10px_rgba(251,191,36,0.3)] lg:shadow-[0_0_15px_rgba(251,191,36,0.4)]' 
-              : 'w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 border-yellow-400'
+              ? 'w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 border-ui-gold shadow-[0_0_15px_rgba(255,183,77,0.4)]' 
+              : 'w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 border-ui-teal/60'
             }`}
         >
           {character ? (
@@ -95,7 +95,7 @@ export const StatControl: React.FC<StatControlProps> = ({
         
         {/* Main Battle Bonus Badge - Positioned below avatar like in the image */}
         {isMain && mainBonus && (
-          <div className="absolute -bottom-1 lg:-bottom-2 left-1/2 transform -translate-x-1/2 z-30 bg-gradient-to-br from-orange-400 to-orange-500 text-white font-black text-xs lg:text-base px-2 lg:px-3 py-1 lg:py-1.5 rounded-full shadow-lg border-2 border-white">
+          <div className="absolute -bottom-1 lg:-bottom-2 left-1/2 transform -translate-x-1/2 z-30 bg-gradient-to-br from-ui-coral to-ui-pink text-white font-black text-xs lg:text-base px-2 lg:px-3 py-1 lg:py-1.5 rounded-full shadow-soft border-2 border-white">
             +{mainBonus}
           </div>
         )}
@@ -103,7 +103,7 @@ export const StatControl: React.FC<StatControlProps> = ({
         {/* Change Icon (Blue Circle with Arrows) */}
         <button 
             onClick={onIconClick}
-            className="absolute top-0 right-0 lg:top-1 lg:right-1 z-10 bg-blue-400 hover:bg-blue-500 text-white rounded-full p-1 lg:p-1.5 shadow-md border lg:border-2 border-white transition-colors"
+            className="absolute top-0 right-0 lg:top-1 lg:right-1 z-10 bg-gradient-to-br from-ui-blue to-ui-teal hover:from-ui-teal hover:to-ui-blue text-white rounded-full p-1 lg:p-1.5 shadow-soft border lg:border-2 border-white transition-all"
             title="更換角色"
         >
             <Repeat className="w-3 h-3 lg:w-3.5 lg:h-3.5" strokeWidth={3} />
@@ -206,13 +206,13 @@ export const StatControl: React.FC<StatControlProps> = ({
       </div>
 
       {/* Control Buttons */}
-      <div className="flex items-center gap-0.5 lg:gap-2 bg-cream-100 p-1 lg:p-1.5 rounded-full border border-cream-300 shadow-inner w-full justify-between max-w-[100px] lg:max-w-none h-[2rem] lg:h-[2.5rem]">
+      <div className="flex items-center gap-0.5 lg:gap-2 bg-gradient-to-r from-cream-100 to-cream-50 p-1 lg:p-1.5 rounded-full border-2 border-cream-200 shadow-soft w-full justify-between max-w-[100px] lg:max-w-none h-[2rem] lg:h-[2.5rem]">
         <button
           onClick={onDecrease}
           disabled={!canDecrease}
           className={`w-6 h-6 lg:w-8 lg:h-8 rounded-full flex items-center justify-center transition-all flex-shrink-0 ${
             canDecrease 
-              ? 'bg-white text-coffee-600 shadow-sm hover:bg-gray-50 border border-gray-200' 
+              ? 'bg-white text-ui-coral shadow-soft hover:bg-ui-coral/10 border-2 border-ui-coral/20 hover:border-ui-coral/40' 
               : 'bg-transparent text-gray-300 cursor-not-allowed'
           }`}
         >
@@ -231,8 +231,8 @@ export const StatControl: React.FC<StatControlProps> = ({
           disabled={!canIncrease}
           className={`w-6 h-6 lg:w-8 lg:h-8 rounded-full flex items-center justify-center transition-all flex-shrink-0 ${
             canIncrease 
-              ? 'bg-ui-gold text-white shadow-sm hover:bg-amber-400 border border-amber-300' 
-              : 'bg-gray-100 text-gray-300 cursor-not-allowed'
+              ? 'bg-gradient-to-br from-ui-gold to-amber-400 text-white shadow-soft hover:shadow-card border-2 border-amber-300' 
+              : 'bg-gray-100 text-gray-300 cursor-not-allowed border-2 border-gray-200'
           }`}
         >
           {nextCost === null ? <Lock className="w-3 h-3 lg:w-3.5 lg:h-3.5" /> : <Plus className="w-3 h-3 lg:w-4 lg:h-4" strokeWidth={3} />}

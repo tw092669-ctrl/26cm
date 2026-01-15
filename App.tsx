@@ -320,26 +320,31 @@ const App: React.FC = () => {
       <div className="max-w-5xl mx-auto space-y-4 sm:space-y-8">
         
         {/* Header */}
-        <header className="flex flex-col gap-4 sm:gap-6 border-b-2 border-cream-300 pb-4 sm:pb-6">
-          <div className="text-center md:text-left">
-            <h1 className="text-2xl sm:text-3xl font-bold text-coffee-800 tracking-tight">
-              五代麥樂獸拼圖配點
-            </h1>
-            <p className="text-xs sm:text-base text-coffee-600 mt-1">計算最佳的主戰與特技等級分配</p>
+        <header className="bg-white/80 backdrop-blur-sm rounded-4xl shadow-soft-lg p-6 sm:p-8">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-ui-coral to-ui-pink flex items-center justify-center shadow-soft">
+                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="white" />
+              </div>
+              <h1 className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-ui-coral via-ui-pink to-ui-lavender bg-clip-text text-transparent">
+                五代麥樂獸拼圖配點
+              </h1>
+            </div>
+            <p className="text-sm sm:text-lg text-coffee-600 mt-1">計算最佳的主戰與特技等級分配</p>
           </div>
           
           {/* Controls Toolbar */}
-          <div className="grid grid-cols-2 gap-3 w-full md:flex md:flex-row md:items-center md:justify-between md:gap-4">
+          <div className="grid grid-cols-2 gap-3 w-full md:flex md:flex-row md:items-center md:justify-between md:gap-4 mt-6">
             
             {/* 1. Free Mode Toggle & Reset */}
             {/* Desktop: Order 1 (Left), Mobile: Order 2 (Bottom Left) */}
             <div className="order-2 md:order-1 col-span-1 flex gap-2 justify-start w-full md:w-auto">
               <button
                 onClick={() => setIsFreeMode(!isFreeMode)}
-                className={`flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-5 sm:py-2.5 rounded-full border-2 transition-all flex-1 md:flex-none font-bold text-xs sm:text-base ${
+                className={`flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-5 sm:py-2.5 rounded-full border-2 transition-all flex-1 md:flex-none font-bold text-xs sm:text-base shadow-soft hover:shadow-card ${
                   isFreeMode 
-                    ? 'bg-purple-100 border-purple-400 text-purple-700 shadow-sm' 
-                    : 'bg-white border-cream-300 text-coffee-400 hover:bg-cream-100'
+                    ? 'bg-gradient-to-r from-purple-100 to-ui-lavender/50 border-purple-300 text-purple-700' 
+                    : 'bg-white border-cream-300 text-coffee-400 hover:bg-cream-50'
                 }`}
               >
                 {isFreeMode ? <Unlock size={14} className="sm:w-4 sm:h-4" /> : <Lock size={14} className="sm:w-4 sm:h-4" />}
@@ -350,7 +355,7 @@ const App: React.FC = () => {
                   setMainLevel(8);
                   setSkillLevels([3, 3, 3]);
                 }}
-                className="flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full border-2 border-coffee-300 bg-white text-coffee-600 hover:bg-coffee-50 transition-all font-bold text-xs sm:text-base"
+                className="flex items-center justify-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full border-2 border-ui-coral/30 bg-white text-ui-coral hover:bg-ui-coral/10 transition-all font-bold text-xs sm:text-base shadow-soft hover:shadow-card"
                 title="重置等级配置"
               >
                 <RotateCcw size={14} className="sm:w-4 sm:h-4" />
@@ -361,13 +366,13 @@ const App: React.FC = () => {
             {/* 2. Total Multiplier Display */}
             {/* Desktop: Order 2 (Center), Mobile: Order 1 (Top Full Width) */}
             <div className="order-1 md:order-2 col-span-2 flex justify-center w-full md:w-auto">
-              <div className="bg-white border-2 border-blue-200 px-4 py-2 sm:px-6 rounded-full flex items-center justify-center gap-2 sm:gap-3 w-full md:w-auto shadow-sm">
-                <div className="p-1 sm:p-1.5 bg-blue-100 rounded-full text-blue-500">
+              <div className="bg-gradient-to-r from-ui-teal/20 to-ui-blue/20 border-2 border-ui-teal/40 px-4 py-2 sm:px-6 rounded-full flex items-center justify-center gap-2 sm:gap-3 w-full md:w-auto shadow-soft">
+                <div className="p-1 sm:p-1.5 bg-gradient-to-br from-ui-teal to-ui-blue rounded-full text-white shadow-soft">
                     <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                    <span className="text-[10px] sm:text-xs text-blue-400 uppercase font-bold tracking-wider block leading-none">總倍率</span>
-                    <span className="text-lg sm:text-xl font-mono font-bold text-blue-600 leading-none">{Math.round(totalMultiplier)}%</span>
+                    <span className="text-[10px] sm:text-xs text-ui-teal uppercase font-bold tracking-wider block leading-none">總倍率</span>
+                    <span className="text-lg sm:text-xl font-mono font-bold bg-gradient-to-r from-ui-teal to-ui-blue bg-clip-text text-transparent leading-none">{Math.round(totalMultiplier)}%</span>
                 </div>
               </div>
             </div>
@@ -410,8 +415,8 @@ const App: React.FC = () => {
 
         {/* Warning if over budget */}
         {!isFreeMode && remainingShards < 0 && (
-           <div className="bg-red-50 border border-red-200 text-red-700 p-3 sm:p-4 rounded-xl flex items-center gap-3 animate-pulse shadow-sm text-sm sm:text-base">
-             <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
+           <div className="bg-gradient-to-r from-red-50 to-ui-coral/10 border-2 border-ui-coral/40 text-red-700 p-3 sm:p-4 rounded-2xl flex items-center gap-3 shadow-soft text-sm sm:text-base">
+             <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-ui-coral" />
              <span className="font-medium">碎片不足！需要額外 {Math.abs(remainingShards)} 個碎片。</span>
            </div>
         )}
@@ -419,15 +424,16 @@ const App: React.FC = () => {
         {/* Main Game Interface Area - Unified Row for Mobile */}
         <div className="flex flex-row gap-2 lg:gap-6 items-stretch">
           
-          {/* LEFT: Main Battle Panel (Yellow Theme) */}
+          {/* LEFT: Main Battle Panel (Coral Theme) */}
           <div className="w-[27%] lg:w-1/3 flex flex-col">
-              <div className="bg-cream-100 border lg:border-2 border-cream-300 rounded-xl lg:rounded-3xl p-1.5 lg:p-6 flex flex-col items-center justify-start lg:justify-center relative overflow-hidden shadow-card h-full lg:min-h-[300px]">
+              <div className="bg-gradient-to-br from-ui-coral/10 via-white to-ui-pink/10 border lg:border-2 border-ui-coral/30 rounded-xl lg:rounded-4xl p-1.5 lg:p-6 flex flex-col items-center justify-start lg:justify-center relative overflow-hidden shadow-soft-lg h-full lg:min-h-[300px]">
                 {/* Decorative Background (Reduced on mobile) */}
-                <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 to-transparent opacity-50"></div>
-                <div className="hidden lg:block absolute -top-10 -left-10 w-32 h-32 bg-yellow-200 rounded-full blur-3xl opacity-30"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-ui-coral/20 to-transparent opacity-50"></div>
+                <div className="hidden lg:block absolute -top-10 -left-10 w-32 h-32 bg-ui-pink rounded-full blur-3xl opacity-20"></div>
+                <div className="hidden lg:block absolute -bottom-10 -right-10 w-40 h-40 bg-ui-coral rounded-full blur-3xl opacity-20"></div>
                 
                 {/* Title - Force flex-row on mobile to match Skills height and alignment */}
-                <h2 className="relative z-10 text-amber-600 font-bold mb-1 lg:mb-4 flex flex-row items-center justify-center gap-1 lg:gap-2 uppercase tracking-widest text-[8px] lg:text-sm text-center">
+                <h2 className="relative z-10 text-ui-coral font-bold mb-1 lg:mb-4 flex flex-row items-center justify-center gap-1 lg:gap-2 uppercase tracking-widest text-[8px] lg:text-sm text-center">
                     <Swords className="w-3 h-3 lg:w-4 lg:h-4" /> 
                     <span>主戰</span>
                 </h2>
@@ -455,10 +461,12 @@ const App: React.FC = () => {
               </div>
           </div>
 
-          {/* RIGHT: Skills Panel (White Theme) */}
+          {/* RIGHT: Skills Panel (Teal Theme) */}
           <div className="w-[73%] lg:w-2/3 flex flex-col">
-            <div className="bg-white border lg:border-2 border-cream-300 rounded-xl lg:rounded-3xl p-1.5 lg:p-6 shadow-card h-full">
-                <h2 className="text-coffee-400 font-bold mb-1 lg:mb-6 flex items-center gap-1 lg:gap-2 uppercase tracking-widest text-[8px] lg:text-sm ml-1 lg:ml-2">
+            <div className="bg-gradient-to-br from-ui-teal/10 via-white to-ui-blue/10 border lg:border-2 border-ui-teal/30 rounded-xl lg:rounded-4xl p-1.5 lg:p-6 shadow-soft-lg h-full relative overflow-hidden">
+                <div className="hidden lg:block absolute -top-10 -right-10 w-32 h-32 bg-ui-blue rounded-full blur-3xl opacity-15"></div>
+                <div className="hidden lg:block absolute -bottom-10 -left-10 w-40 h-40 bg-ui-teal rounded-full blur-3xl opacity-15"></div>
+                <h2 className="text-ui-teal font-bold mb-1 lg:mb-6 flex items-center gap-1 lg:gap-2 uppercase tracking-widest text-[8px] lg:text-sm ml-1 lg:ml-2 relative z-10">
                     <Zap className="w-3 h-3 lg:w-4 lg:h-4" /> 支援
                 </h2>
                 
@@ -519,9 +527,11 @@ const App: React.FC = () => {
         </div>
 
         {/* Effect Section */}
-        <div className="bg-white border lg:border-2 border-cream-300 rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-card transition-all">
-           <h3 className="text-coffee-600 font-bold mb-2 flex items-center gap-2 text-sm lg:text-base">
-              <Sparkles className="w-4 h-4 text-ui-gold" fill="#FBBF24" /> 
+        <div className="bg-gradient-to-r from-ui-lavender/10 via-white to-ui-pink/10 border-2 border-ui-lavender/30 rounded-2xl lg:rounded-4xl p-4 lg:p-6 shadow-soft-lg transition-all relative overflow-hidden">
+           <div className="hidden lg:block absolute -top-10 -left-10 w-32 h-32 bg-ui-lavender rounded-full blur-3xl opacity-15"></div>
+           <div className="hidden lg:block absolute -bottom-10 -right-10 w-32 h-32 bg-ui-pink rounded-full blur-3xl opacity-15"></div>
+           <h3 className="text-ui-lavender font-bold mb-2 flex items-center gap-2 text-sm lg:text-base relative z-10">
+              <Sparkles className="w-4 h-4 text-ui-lavender" fill="currentColor" /> 
               <span>效果</span>
            </h3>
            <div className={`text-sm lg:text-base font-medium ${mainCharacter ? 'text-coffee-800' : 'text-coffee-400 italic'}`}>
@@ -550,11 +560,11 @@ const App: React.FC = () => {
         />
 
         {/* Reference Data Table */}
-        <div className="mt-8 border-t border-cream-300 pt-8 hidden sm:block">
-            <h3 className="text-coffee-400 text-sm font-bold mb-4 uppercase tracking-widest text-center">階段參考表</h3>
-            <div className="overflow-x-auto rounded-2xl border border-cream-300 shadow-sm">
+        <div className="mt-8 border-t-2 border-cream-200 pt-8 hidden sm:block">
+            <h3 className="text-ui-lavender text-sm font-bold mb-4 uppercase tracking-widest text-center">階段參考表</h3>
+            <div className="overflow-x-auto rounded-3xl border-2 border-cream-200 shadow-soft-lg">
                 <table className="w-full text-sm text-left text-coffee-600 bg-white">
-                    <thead className="text-xs text-coffee-500 uppercase bg-cream-100">
+                    <thead className="text-xs text-coffee-500 uppercase bg-gradient-to-r from-cream-100 to-cream-50">
                         <tr>
                             <th className="px-6 py-3 font-bold">階段</th>
                             <th className="px-6 py-3 font-bold">累計碎片</th>
@@ -564,10 +574,10 @@ const App: React.FC = () => {
                     </thead>
                     <tbody>
                         {MAIN_BATTLE_COSTS.map((m) => (
-                            <tr key={`main-${m.level}`} className="border-b border-cream-100 hover:bg-cream-50">
+                            <tr key={`main-${m.level}`} className="border-b border-cream-100 hover:bg-gradient-to-r hover:from-ui-coral/5 hover:to-transparent transition-colors">
                                 <td className={`px-6 py-2 font-bold ${
-                                    m.rank === MainRank.GOLD ? 'text-amber-500' : 
-                                    m.rank === MainRank.RED ? 'text-red-500' : 'text-purple-500'
+                                    m.rank === MainRank.GOLD ? 'text-ui-gold' : 
+                                    m.rank === MainRank.RED ? 'text-ui-coral' : 'text-ui-lavender'
                                 }`}>
                                     {m.label}
                                 </td>
@@ -581,7 +591,7 @@ const App: React.FC = () => {
             </div>
         </div>
 
-        <div className="text-center text-coffee-400 text-xs sm:text-sm font-medium pb-8">
+        <div className="text-center bg-gradient-to-r from-ui-coral via-ui-pink to-ui-lavender bg-clip-text text-transparent text-xs sm:text-sm font-bold pb-8">
           程式製作_by26
         </div>
 

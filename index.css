@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply bg-cream-50 text-coffee-800;
+    @apply bg-gradient-to-br from-cream-50 via-cream-100 to-ui-peach/20 text-coffee-800;
+    background-attachment: fixed;
   }
 }
 

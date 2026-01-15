@@ -79,29 +79,29 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-6 border border-cream-300 shadow-card flex flex-col md:flex-row items-center justify-between gap-8">
+    <div className="bg-gradient-to-br from-white via-ui-peach/5 to-white rounded-3xl p-6 border-2 border-cream-200 shadow-soft-lg flex flex-col md:flex-row items-center justify-between gap-8">
       
       {/* Text Stats */}
       <div className="flex-1 space-y-6 w-full">
         <div>
             {/* Tab Header */}
-            <div className="flex gap-2 mb-4 border-b border-cream-200">
+            <div className="flex gap-2 mb-4 border-b-2 border-cream-200">
               <button
                 onClick={() => setActiveTab('characters')}
-                className={`px-4 py-2 font-bold transition-colors ${
+                className={`px-4 py-2 font-bold transition-all rounded-t-lg ${
                   activeTab === 'characters'
-                    ? 'text-coffee-800 border-b-2 border-amber-500'
-                    : 'text-coffee-400 hover:text-coffee-600'
+                    ? 'text-ui-coral border-b-2 border-ui-coral bg-ui-coral/5'
+                    : 'text-coffee-400 hover:text-coffee-600 hover:bg-cream-50'
                 }`}
               >
                 角色統計
               </button>
               <button
                 onClick={() => setActiveTab('summary')}
-                className={`px-4 py-2 font-bold transition-colors ${
+                className={`px-4 py-2 font-bold transition-all rounded-t-lg ${
                   activeTab === 'summary'
-                    ? 'text-coffee-800 border-b-2 border-amber-500'
-                    : 'text-coffee-400 hover:text-coffee-600'
+                    ? 'text-ui-teal border-b-2 border-ui-teal bg-ui-teal/5'
+                    : 'text-coffee-400 hover:text-coffee-600 hover:bg-cream-50'
                 }`}
               >
                 分配概況
@@ -112,17 +112,17 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
               <div className="space-y-3">
                 {characterShardStats.length > 0 ? (
                   characterShardStats.map((group) => (
-                    <div key={group.color} className="flex items-center justify-between p-3 bg-cream-50 rounded-lg border-l-4" style={{ borderLeftColor: group.main?.color || group.skill?.color || '#D6D3D1' }}>
+                    <div key={group.color} className="flex items-center justify-between p-3 bg-gradient-to-r from-cream-50 to-white rounded-xl border-l-4 shadow-soft" style={{ borderLeftColor: group.main?.color || group.skill?.color || '#D6D3D1' }}>
                       <div className="flex items-center gap-2">
                         {/* Character Icons */}
                         <div className="flex items-center -space-x-2">
                           {group.main && (
-                            <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm">
+                            <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-soft">
                               <img src={group.main.imageUrl} alt={group.main.name} className="w-full h-full object-cover" />
                             </div>
                           )}
                           {group.skill && (
-                            <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm">
+                            <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-soft">
                               <img src={group.skill.imageUrl} alt={group.skill.name} className="w-full h-full object-cover" />
                             </div>
                           )}
