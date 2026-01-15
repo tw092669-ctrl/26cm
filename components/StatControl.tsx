@@ -138,7 +138,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                       <svg key={i} className="w-4 h-4 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-eternal-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style={{stopColor: '#a855f7', stopOpacity: 1}} />
+                            <stop offset="0%" style={{stopColor: '#ef4444', stopOpacity: 1}} />
                             <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
