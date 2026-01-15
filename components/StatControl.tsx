@@ -138,12 +138,12 @@ export const StatControl: React.FC<StatControlProps> = ({
                       <svg key={i} className="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-eternal-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style={{stopColor: '#a855f7', stopOpacity: 1}} />
-                            <stop offset="50%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
-                            <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
+                            <stop offset="0%" style={{stopColor: '#e9d5ff', stopOpacity: 1}} />
+                            <stop offset="50%" style={{stopColor: '#ffc0cb', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-eternal-${i})`} stroke="#999" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-eternal-${i})`} stroke="#9333ea" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   } else if (rankType === 'gold') {
@@ -151,11 +151,11 @@ export const StatControl: React.FC<StatControlProps> = ({
                       <svg key={i} className="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-gold-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
-                            <stop offset="100%" style={{stopColor: '#ca8a04', stopOpacity: 1}} />
+                            <stop offset="0%" style={{stopColor: '#ffc0cb', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#be123c', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-gold-${i})`} stroke="#999" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-gold-${i})`} stroke="#8b4513" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   } else {
@@ -163,11 +163,11 @@ export const StatControl: React.FC<StatControlProps> = ({
                       <svg key={i} className="w-5 h-5 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                           <linearGradient id={`star-red-${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style={{stopColor: '#fecaca', stopOpacity: 1}} />
-                            <stop offset="100%" style={{stopColor: '#dc2626', stopOpacity: 1}} />
+                            <stop offset="0%" style={{stopColor: '#ffffff', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-red-${i})`} stroke="#999" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-red-${i})`} stroke="#8b4513" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   }
