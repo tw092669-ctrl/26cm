@@ -131,7 +131,7 @@ export const StatControl: React.FC<StatControlProps> = ({
               eternal: 'bg-cream-100'
             };
             return (
-              <div className={`flex gap-0.5 px-2.5 py-1.5 rounded-full ${bgColors[rankType]} border border-cream-300 shadow-md`}>
+              <div className={`flex gap-[0.125rem] px-2.5 py-1.5 rounded-full ${bgColors[rankType]} border border-cream-300 shadow-md`}>
                 {[...Array(levelNum)].map((_, i) => {
                   if (rankType === 'eternal') {
                     return (
@@ -143,7 +143,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#facc15', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-eternal-${i})`} stroke="#666" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-eternal-${i})`} stroke="#999" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   } else if (rankType === 'gold') {
@@ -155,7 +155,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#ca8a04', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-gold-${i})`} stroke="#666" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-gold-${i})`} stroke="#999" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   } else {
@@ -167,7 +167,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#dc2626', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-red-${i})`} stroke="#666" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-red-${i})`} stroke="#999" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   }
