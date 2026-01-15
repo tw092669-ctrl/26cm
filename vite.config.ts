@@ -5,9 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      // GitHub Pages 部署時需要設定正確的 base 路徑
-      // 如果部署在 https://<USERNAME>.github.io/<REPO>/ 則設為 '/<REPO>/'
-      // 如果部署在 https://<USERNAME>.github.io/ 則設為 '/'
+      // GitHub Pages 部署路徑設定
+      // 部署 URL: https://tw092669-ctrl.github.io/26cm/
       base: mode === 'production' ? '/26cm/' : '/',
       
       server: {
