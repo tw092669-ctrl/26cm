@@ -143,7 +143,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#fef08a', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5L14.5 9.5L12 11L9.5 9.5L12 5Z M12 13L14.5 14.5L12 19L9.5 14.5L12 13Z M14.5 9.5L19 12L14.5 14.5L13 12L14.5 9.5Z M9.5 14.5L5 12L9.5 9.5L9.5 14.5Z M9.5 9.5L14.5 9.5L14.5 14.5L9.5 14.5Z" fill={`url(#star-eternal-${i})`} stroke="#000" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-eternal-${i})`} stroke="#000" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   } else if (rankType === 'gold') {
@@ -155,7 +155,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#ca8a04', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5L14.5 9.5L12 11L9.5 9.5L12 5Z M12 13L14.5 14.5L12 19L9.5 14.5L12 13Z M14.5 9.5L19 12L14.5 14.5L13 12L14.5 9.5Z M9.5 14.5L5 12L9.5 9.5L9.5 14.5Z M9.5 9.5L14.5 9.5L14.5 14.5L9.5 14.5Z" fill={`url(#star-gold-${i})`} stroke="#000" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-gold-${i})`} stroke="#000" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   } else {
@@ -167,7 +167,7 @@ export const StatControl: React.FC<StatControlProps> = ({
                             <stop offset="100%" style={{stopColor: '#dc2626', stopOpacity: 1}} />
                           </linearGradient>
                         </defs>
-                        <path d="M12 5L14.5 9.5L12 11L9.5 9.5L12 5Z M12 13L14.5 14.5L12 19L9.5 14.5L12 13Z M14.5 9.5L19 12L14.5 14.5L13 12L14.5 9.5Z M9.5 14.5L5 12L9.5 9.5L9.5 14.5Z M9.5 9.5L14.5 9.5L14.5 14.5L9.5 14.5Z" fill={`url(#star-red-${i})`} stroke="#000" strokeWidth="0.8" strokeLinejoin="round" />
+                        <path d="M12 5 L14.5 9.5 L19 12 L14.5 14.5 L12 19 L9.5 14.5 L5 12 L9.5 9.5 Z" fill={`url(#star-red-${i})`} stroke="#000" strokeWidth="0.8" strokeLinejoin="round" />
                       </svg>
                     );
                   }
