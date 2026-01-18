@@ -211,7 +211,7 @@ export const StatControl: React.FC<StatControlProps> = ({
       </div>
 
       {/* Control Buttons */}
-      <div className="flex items-center gap-0.5 lg:gap-2 bg-gradient-to-r from-cream-100 to-cream-50 p-1 lg:p-1.5 rounded-full border-2 border-cream-200 shadow-soft w-full justify-between max-w-[100px] lg:max-w-none h-[2rem] lg:h-[2.5rem]">
+      <div className="flex items-center gap-0.5 lg:gap-2 bg-gradient-to-r from-cream-100 to-cream-50 p-1 lg:p-1.5 rounded-full border-2 border-cream-200 shadow-soft w-full justify-between max-w-[100px] lg:max-w-none">
         <button
           onClick={onDecrease}
           disabled={!canDecrease}
@@ -224,11 +224,21 @@ export const StatControl: React.FC<StatControlProps> = ({
           <Minus className="w-3 h-3 lg:w-4 lg:h-4" strokeWidth={3} />
         </button>
 
-        <div className="flex flex-col items-center flex-1 min-w-0">
-            <span className="text-[10px] lg:text-xs text-coffee-400 uppercase leading-none scale-90 lg:scale-100 font-extrabold">碎片</span>
-            <span className={`text-sm lg:text-base font-extrabold font-mono leading-tight ${nextCost !== null ? (canIncrease ? 'text-coffee-800' : 'text-red-500') : 'text-gray-400'}`}>
+        <div className="flex flex-col items-center justify-center flex-1 min-w-0 py-0.5">
+            <div className="flex items-center gap-1">
+              <span className="text-[9px] lg:text-[10px] text-amber-600 font-bold leading-none">碎片</span>
+              <span className={`text-xs lg:text-sm font-extrabold font-mono leading-none ${nextCost !== null ? (canIncrease ? 'text-amber-700' : 'text-red-500') : 'text-gray-400'}`}>
                 {nextCost !== null ? nextCost : '-'}
-            </span>
+              </span>
+            </div>
+            {nextChengCost !== undefined && nextChengCost !== null && (
+              <div className="flex items-center gap-1 mt-0.5">
+                <span className="text-[9px] lg:text-[10px] text-yellow-600 font-bold leading-none">澄閃閃</span>
+                <span className="text-xs lg:text-sm font-extrabold font-mono leading-none text-yellow-700">
+                  {nextChengCost}
+                </span>
+              </div>
+            )}
         </div>
 
         <button
@@ -243,14 +253,6 @@ export const StatControl: React.FC<StatControlProps> = ({
           {nextCost === null ? <Lock className="w-3 h-3 lg:w-3.5 lg:h-3.5" /> : <Plus className="w-3 h-3 lg:w-4 lg:h-4" strokeWidth={3} />}
         </button>
       </div>
-
-      {/* Cheng Cost Display */}
-      {nextChengCost !== undefined && nextChengCost !== null && (
-        <div className="mt-1 lg:mt-1.5 flex items-center justify-center gap-1 text-[10px] lg:text-xs">
-          <span className="text-yellow-600 font-extrabold">澄閃閃:</span>
-          <span className="text-yellow-700 font-bold">{nextChengCost}</span>
-        </div>
-      )}
 
       {/* Current Resources Display - Two Blocks */}
       <div className="mt-1 lg:mt-2 w-full grid grid-cols-2 gap-1 lg:gap-2">
