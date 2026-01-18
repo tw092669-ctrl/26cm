@@ -6,21 +6,28 @@ interface ShardSummaryProps {
   totalLimit: number;
   usedMain: number;
   usedSkill: number;
+  usedMainCheng: number;
+  usedSkillCheng: number;
   mainCharacter: Character | null;
   skillCharacters: (Character | null)[];
   skillCosts: number[];
+  skillChengCosts: number[];
 }
 
 export const ShardSummary: React.FC<ShardSummaryProps> = ({
   totalLimit,
   usedMain,
   usedSkill,
+  usedMainCheng,
+  usedSkillCheng,
   mainCharacter,
   skillCharacters,
-  skillCosts
+  skillCosts,
+  skillChengCosts
 }) => {
   const [activeTab, setActiveTab] = useState<'summary' | 'characters'>('characters');
   const remaining = Math.max(0, totalLimit - usedMain - usedSkill);
+  const totalCheng = usedMainCheng + usedSkillCheng;
   
   // Calculate character shard totals
   const characterShardStats = useMemo(() => {
@@ -172,6 +179,10 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
                 <div className="flex justify-between items-center p-3 bg-cream-50 rounded-lg border-l-4 border-stone-400">
                     <span className="text-coffee-600 font-extrabold text-base">剩餘可用</span>
                     <span className={`text-xl font-bold ${remaining < 0 ? 'text-red-500' : 'text-stone-500'}`}>{remaining}</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border-l-4 border-yellow-500 shadow-soft">
+                    <span className="text-coffee-600 font-extrabold text-base">澄閃閃總需</span>
+                    <span className="text-xl font-bold text-yellow-600">{totalCheng}</span>
                 </div>
               </div>
             )}

@@ -9,6 +9,8 @@ export interface LevelCost {
   level: number;
   cost: number;
   cumulativeCost: number;
+  chengCost?: number; // 澄閃閃需求
+  cumulativeChengCost?: number; // 累計澄閃閃需求
   rank?: MainRank;
   label?: string;
 }

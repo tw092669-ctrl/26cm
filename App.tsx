@@ -54,6 +54,11 @@ const App: React.FC = () => {
     return MAIN_BATTLE_COSTS[mainLevel - 1].cumulativeCost;
   }, [mainLevel]);
 
+  const currentMainChengCost = useMemo(() => {
+    if (mainLevel === 0) return 0;
+    return MAIN_BATTLE_COSTS[mainLevel - 1].cumulativeChengCost || 0;
+  }, [mainLevel]);
+
   const skillCosts = useMemo(() => {
     return skillLevels.map((level, index) => {
       if (skillCharacters[index]?.id === 'gen4') return 0;
@@ -61,9 +66,20 @@ const App: React.FC = () => {
     });
   }, [skillLevels, skillCharacters]);
 
+  const skillChengCosts = useMemo(() => {
+    return skillLevels.map((level, index) => {
+      if (skillCharacters[index]?.id === 'gen4') return 0;
+      return SKILL_COSTS[level - 1].cumulativeChengCost || 0;
+    });
+  }, [skillLevels, skillCharacters]);
+
   const currentTotalSkillCost = useMemo(() => {
     return skillCosts.reduce((total, cost) => total + cost, 0);
   }, [skillCosts]);
+
+  const currentTotalSkillChengCost = useMemo(() => {
+    return skillChengCosts.reduce((total, cost) => total + cost, 0);
+  }, [skillChengCosts]);
 
   // Auto-calculate total shards in Free Mode
   useEffect(() => {
@@ -78,6 +94,7 @@ const App: React.FC = () => {
 
   // In Free Mode, we ignore the budget constraint
   const nextMainCost = mainLevel < MAX_MAIN_LEVEL ? MAIN_BATTLE_COSTS[mainLevel].cost : null;
+  const nextMainChengCost = mainLevel < MAX_MAIN_LEVEL ? MAIN_BATTLE_COSTS[mainLevel].chengCost : null;
   const canIncreaseMain = nextMainCost !== null && (isFreeMode || remainingShards >= nextMainCost);
   const canDecreaseMain = mainLevel > 0;
 
@@ -443,7 +460,9 @@ const App: React.FC = () => {
                         title="主戰等級"
                         currentLevelLabel={getMainLabel()}
                         currentCost={currentMainCost}
+                        currentChengCost={currentMainChengCost}
                         nextCost={nextMainCost}
+                        nextChengCost={nextMainChengCost}
                         canIncrease={canIncreaseMain}
                         canDecrease={canDecreaseMain}
                         onIncrease={() => setMainLevel(prev => prev + 1)}
@@ -476,14 +495,18 @@ const App: React.FC = () => {
                         const data = skillData[index];
                         const isGen4 = data.isGen4;
                         
-                        let currentCost, nextCost;
+                        let currentCost, currentChengCost, nextCost, nextChengCost;
                         
                         if (isGen4) {
                             currentCost = 0;
+                            currentChengCost = 0;
                             nextCost = level < MAX_SKILL_LEVEL ? 0 : null;
+                            nextChengCost = level < MAX_SKILL_LEVEL ? 0 : null;
                         } else {
                             currentCost = SKILL_COSTS[level - 1].cumulativeCost;
+                            currentChengCost = SKILL_COSTS[level - 1].cumulativeChengCost || 0;
                             nextCost = level < MAX_SKILL_LEVEL ? SKILL_COSTS[level].cost : null;
+                            nextChengCost = level < MAX_SKILL_LEVEL ? (SKILL_COSTS[level].chengCost || 0) : null;
                         }
                         
                         const canIncrease = nextCost !== null && (isFreeMode || isGen4 || remainingShards >= nextCost);
@@ -502,7 +525,9 @@ const App: React.FC = () => {
                                 title={`特技 ${index + 1}`}
                                 currentLevelLabel={`Lv.${level}`}
                                 currentCost={currentCost}
+                                currentChengCost={currentChengCost}
                                 nextCost={nextCost}
+                                nextChengCost={nextChengCost}
                                 canIncrease={canIncrease}
                                 canDecrease={canDecrease}
                                 onIncrease={() => updateSkillLevel(index, 1)}
@@ -554,9 +579,12 @@ const App: React.FC = () => {
           totalLimit={totalShards}
           usedMain={currentMainCost}
           usedSkill={currentTotalSkillCost}
+          usedMainCheng={currentMainChengCost}
+          usedSkillCheng={currentTotalSkillChengCost}
           mainCharacter={mainCharacter}
           skillCharacters={skillCharacters}
           skillCosts={skillCosts}
+          skillChengCosts={skillChengCosts}
         />
 
         {/* Reference Data Table */}

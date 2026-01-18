@@ -6,7 +6,9 @@ interface StatControlProps {
   title: string;
   currentLevelLabel: string;
   currentCost: number;
+  currentChengCost?: number; // 當前澄閃閃消耗
   nextCost: number | null;
+  nextChengCost?: number | null; // 下一級澄閃閃需求
   canIncrease: boolean;
   canDecrease: boolean;
   onIncrease: () => void;
@@ -32,7 +34,9 @@ export const StatControl: React.FC<StatControlProps> = ({
   title,
   currentLevelLabel,
   currentCost,
+  currentChengCost = 0,
   nextCost,
+  nextChengCost,
   canIncrease,
   canDecrease,
   onIncrease,
@@ -221,7 +225,7 @@ export const StatControl: React.FC<StatControlProps> = ({
         </button>
 
         <div className="flex flex-col items-center flex-1 min-w-0">
-            <span className="text-[10px] lg:text-xs text-coffee-400 uppercase leading-none scale-90 lg:scale-100 font-extrabold">COST</span>
+            <span className="text-[10px] lg:text-xs text-coffee-400 uppercase leading-none scale-90 lg:scale-100 font-extrabold">碎片</span>
             <span className={`text-sm lg:text-base font-extrabold font-mono leading-tight ${nextCost !== null ? (canIncrease ? 'text-coffee-800' : 'text-red-500') : 'text-gray-400'}`}>
                 {nextCost !== null ? nextCost : '-'}
             </span>
@@ -240,9 +244,20 @@ export const StatControl: React.FC<StatControlProps> = ({
         </button>
       </div>
 
+      {/* Cheng Cost Display */}
+      {nextChengCost !== undefined && nextChengCost !== null && (
+        <div className="mt-1 lg:mt-1.5 flex items-center justify-center gap-1 text-[10px] lg:text-xs">
+          <span className="text-yellow-600 font-extrabold">澄閃閃:</span>
+          <span className="text-yellow-700 font-bold">{nextChengCost}</span>
+        </div>
+      )}
+
       {/* Used Cost (Subtle) */}
-      <div className="mt-1 lg:mt-2 text-[10px] lg:text-xs text-coffee-400 h-[0.875rem] lg:h-[1rem] flex items-center justify-center font-bold">
-         已用: {currentCost}
+      <div className="mt-1 lg:mt-2 text-[10px] lg:text-xs text-coffee-400 h-[0.875rem] lg:h-[1rem] flex flex-col items-center justify-center font-bold leading-tight">
+         <div>已用碎片: {currentCost}</div>
+         {currentChengCost > 0 && (
+           <div className="text-yellow-600">已用澄閃閃: {currentChengCost}</div>
+         )}
       </div>
 
       {/* Extra Description (e.g. Warning) */}
