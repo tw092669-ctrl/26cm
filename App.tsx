@@ -690,7 +690,7 @@ const App: React.FC = () => {
         </div>
 
         <div className="text-center text-coffee-800 text-sm sm:text-base font-extrabold pb-8">
-          製作_by26
+          表格製作_by 小不    網頁製作_by 26
         </div>
 
       </div>
