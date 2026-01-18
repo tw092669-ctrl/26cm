@@ -398,11 +398,13 @@ const App: React.FC = () => {
             {/* Desktop: Order 3 (Right), Mobile: Order 3 (Bottom Right) */}
             <div className="order-3 md:order-3 col-span-1 flex flex-col sm:flex-row gap-2 justify-end w-full md:w-auto">
                {/* Shard Input */}
-               <div className={`flex items-center justify-center sm:justify-end gap-1 sm:gap-3 p-1 sm:p-2 pr-3 sm:pr-4 rounded-full border-2 transition-colors w-full md:w-auto ${
-                isFreeMode ? 'bg-purple-50 border-purple-200' : 'bg-white border-cream-300'
+               <div className={`flex items-center justify-center sm:justify-end gap-1 sm:gap-2 px-3 sm:px-4 py-1 sm:py-2 rounded-full border-2 transition-colors w-full md:w-auto shadow-soft ${
+                isFreeMode ? 'bg-purple-50 border-purple-200' : 'bg-amber-50 border-amber-300'
               }`}>
-                <div className="text-right flex items-center gap-1 sm:gap-3 justify-between w-full md:w-auto">
-                  <label htmlFor="shardInput" className="text-xs sm:text-sm text-coffee-400 uppercase font-extrabold pl-1 sm:pl-3 flex items-center gap-0.5 sm:gap-1 whitespace-nowrap">
+                <div className="text-center flex items-center gap-1 sm:gap-2">
+                  <span className={`text-xs sm:text-sm uppercase font-extrabold whitespace-nowrap flex items-center gap-0.5 sm:gap-1 ${
+                    isFreeMode ? 'text-purple-600' : 'text-amber-600'
+                  }`}>
                     {isFreeMode ? (
                        <>
                          <Calculator size={12} className="sm:hidden" />
@@ -410,7 +412,7 @@ const App: React.FC = () => {
                          <span className="hidden xs:inline">自動</span>
                        </>
                     ) : "碎片"}
-                  </label>
+                  </span>
                   <input
                     id="shardInput"
                     type="text"
@@ -418,10 +420,10 @@ const App: React.FC = () => {
                     value={inputValue}
                     readOnly={isFreeMode}
                     onChange={handleInputChange}
-                    className={`w-16 sm:w-24 text-lg sm:text-2xl font-mono font-extrabold outline-none text-right bg-transparent transition-all ${
+                    className={`w-16 sm:w-20 text-lg sm:text-2xl font-mono font-extrabold outline-none text-right bg-transparent transition-all ${
                       isFreeMode 
-                        ? 'text-purple-600 cursor-default' 
-                        : 'text-coffee-800 border-b-2 border-transparent focus:border-amber-400'
+                        ? 'text-purple-700 cursor-default' 
+                        : 'text-amber-700 border-b-2 border-transparent focus:border-amber-500'
                     }`}
                   />
                 </div>
@@ -617,10 +619,14 @@ const App: React.FC = () => {
                     </thead>
                     <tbody>
                         {MAIN_BATTLE_COSTS.map((m) => (
-                            <tr key={`main-${m.level}`} className="border-b border-cream-100 hover:bg-gradient-to-r hover:from-ui-coral/5 hover:to-transparent transition-colors">
-                                <td className={`px-2 sm:px-4 py-1.5 sm:py-2 font-bold whitespace-nowrap ${
-                                    m.rank === MainRank.GOLD ? 'text-ui-gold' : 
-                                    m.rank === MainRank.RED ? 'text-ui-coral' : 'text-ui-lavender'
+                            <tr key={`main-${m.level}`} className={`border-b border-cream-100 transition-colors ${
+                                m.rank === MainRank.GOLD ? 'bg-yellow-50 hover:bg-yellow-100' : 
+                                m.rank === MainRank.RED ? 'bg-pink-50 hover:bg-pink-100' : 
+                                'bg-purple-50 hover:bg-purple-100'
+                            }`}>
+                                <td className={`px-2 sm:px-4 py-1.5 sm:py-2 font-extrabold whitespace-nowrap text-base sm:text-lg ${
+                                    m.rank === MainRank.GOLD ? 'text-yellow-700' : 
+                                    m.rank === MainRank.RED ? 'text-rose-600' : 'text-purple-700'
                                 }`}>
                                     {m.label}
                                 </td>
@@ -654,7 +660,7 @@ const App: React.FC = () => {
                     <tbody>
                         {SKILL_COSTS.map((s) => (
                             <tr key={`skill-${s.level}`} className="border-b border-cream-100 hover:bg-gradient-to-r hover:from-ui-teal/5 hover:to-transparent transition-colors">
-                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-ui-teal whitespace-nowrap">
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-extrabold text-teal-700 whitespace-nowrap text-base sm:text-lg">
                                     Lv.{s.level}
                                 </td>
                                 <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold">{s.cost}</td>
