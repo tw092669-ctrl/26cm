@@ -618,13 +618,18 @@ const App: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {MAIN_BATTLE_COSTS.map((m) => (
+                        {MAIN_BATTLE_COSTS.map((m) => {
+                            // 移除背景色的等級: 1, 3, 5, 7, 9, 11, 13, 15
+                            const shouldRemoveBackground = [1, 3, 5, 7, 9, 11, 13, 15].includes(m.level);
+                            
+                            return (
                             <tr key={`main-${m.level}`} className={`border-b border-cream-100 transition-colors ${
+                                shouldRemoveBackground ? 'bg-white hover:bg-cream-50' :
                                 m.rank === MainRank.GOLD ? 'bg-yellow-50 hover:bg-yellow-100' : 
                                 m.rank === MainRank.RED ? 'bg-pink-50 hover:bg-pink-100' : 
                                 'bg-purple-50 hover:bg-purple-100'
                             }`}>
-                                <td className={`px-2 sm:px-4 py-1.5 sm:py-2 font-extrabold whitespace-nowrap text-base sm:text-lg ${
+                                <td className={`px-2 sm:px-4 py-1.5 sm:py-2 font-extrabold whitespace-nowrap ${
                                     m.rank === MainRank.GOLD ? 'text-yellow-700' : 
                                     m.rank === MainRank.RED ? 'text-rose-600' : 'text-purple-700'
                                 }`}>
@@ -636,7 +641,8 @@ const App: React.FC = () => {
                                 <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold text-yellow-600">{m.cumulativeChengCost}</td>
                                 <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-mono font-semibold text-coffee-400">{getMainMultiplier(m.level)}%</td>
                             </tr>
-                        ))}
+                            );
+                        })}
                     </tbody>
                 </table>
               </div>
@@ -658,9 +664,15 @@ const App: React.FC = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {SKILL_COSTS.map((s) => (
-                            <tr key={`skill-${s.level}`} className="border-b border-cream-100 hover:bg-gradient-to-r hover:from-ui-teal/5 hover:to-transparent transition-colors">
-                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-extrabold text-teal-700 whitespace-nowrap text-base sm:text-lg">
+                        {SKILL_COSTS.map((s) => {
+                            // 雙數等級添加淺色背景
+                            const isEvenLevel = s.level % 2 === 0;
+                            
+                            return (
+                            <tr key={`skill-${s.level}`} className={`border-b border-cream-100 transition-colors ${
+                                isEvenLevel ? 'bg-teal-50 hover:bg-teal-100' : 'bg-white hover:bg-cream-50'
+                            }`}>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-extrabold text-teal-700 whitespace-nowrap">
                                     Lv.{s.level}
                                 </td>
                                 <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold">{s.cost}</td>
@@ -669,7 +681,8 @@ const App: React.FC = () => {
                                 <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold text-yellow-600">{s.cumulativeChengCost}</td>
                                 <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-mono font-semibold text-coffee-400">{getSkillMultiplier(s.level)}%</td>
                             </tr>
-                        ))}
+                            );
+                        })}
                     </tbody>
                 </table>
               </div>
