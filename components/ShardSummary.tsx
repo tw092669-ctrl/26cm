@@ -141,7 +141,7 @@ export const ShardSummary: React.FC<ShardSummaryProps> = ({
                           </span>
                           {group.main && group.skill && (
                             <span className="text-coffee-400 text-xs">
-                              主戰: {Math.round(group.mainCount)} | 特技: {Math.round(group.skillCount)}
+                              主戰: {Math.round(group.mainCount)}碎 | 特技: {Math.round(group.skillCount)}碎
                             </span>
                           )}
                         </div>

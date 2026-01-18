@@ -226,14 +226,14 @@ export const StatControl: React.FC<StatControlProps> = ({
 
         <div className="flex flex-col items-center justify-center flex-1 min-w-0 py-0.5">
             <div className="flex items-center gap-1">
-              <span className="text-[9px] lg:text-[10px] text-amber-600 font-bold leading-none">碎片</span>
+              <span className="text-[9px] lg:text-[10px] text-amber-600 font-bold leading-none">碎</span>
               <span className={`text-xs lg:text-sm font-extrabold font-mono leading-none ${nextCost !== null ? (canIncrease ? 'text-amber-700' : 'text-red-500') : 'text-gray-400'}`}>
                 {nextCost !== null ? nextCost : '-'}
               </span>
             </div>
             {nextChengCost !== undefined && nextChengCost !== null && (
               <div className="flex items-center gap-1 mt-0.5">
-                <span className="text-[9px] lg:text-[10px] text-yellow-600 font-bold leading-none">澄閃閃</span>
+                <span className="text-[9px] lg:text-[10px] text-yellow-600 font-bold leading-none">澄</span>
                 <span className="text-xs lg:text-sm font-extrabold font-mono leading-none text-yellow-700">
                   {nextChengCost}
                 </span>
@@ -254,18 +254,18 @@ export const StatControl: React.FC<StatControlProps> = ({
         </button>
       </div>
 
-      {/* Current Resources Display - Two Blocks */}
-      <div className="mt-1 lg:mt-2 w-full grid grid-cols-2 gap-1 lg:gap-2">
+      {/* Current Resources Display - Single Bubble */}
+      <div className="mt-1 lg:mt-2 w-full bg-white rounded-lg border-2 border-cream-200 shadow-soft overflow-hidden flex">
         {/* Left: Shards */}
-        <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg px-2 py-1 lg:py-1.5 border border-amber-200 flex flex-col items-center justify-center">
-          <span className="text-[10px] lg:text-xs text-amber-600 font-extrabold leading-none">碎片</span>
-          <span className="text-sm lg:text-base text-amber-700 font-bold font-mono leading-tight">{currentCost}</span>
+        <div className="bg-gradient-to-br from-purple-50 to-purple-100 px-2 py-1 lg:py-1.5 flex flex-col items-center justify-center flex-1">
+          <span className="text-[10px] lg:text-xs text-purple-600 font-extrabold leading-none">碎</span>
+          <span className="text-sm lg:text-base text-purple-700 font-bold font-mono leading-tight">{currentCost}</span>
         </div>
         
         {/* Right: Cheng */}
-        <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg px-2 py-1 lg:py-1.5 border border-yellow-200 flex flex-col items-center justify-center">
-          <span className="text-[10px] lg:text-xs text-yellow-600 font-extrabold leading-none">澄閃閃</span>
-          <span className="text-sm lg:text-base text-yellow-700 font-bold font-mono leading-tight">{currentChengCost}</span>
+        <div className="bg-gradient-to-br from-orange-50 to-orange-100 px-2 py-1 lg:py-1.5 flex flex-col items-center justify-center flex-1">
+          <span className="text-[10px] lg:text-xs text-orange-600 font-extrabold leading-none">澄</span>
+          <span className="text-sm lg:text-base text-orange-700 font-bold font-mono leading-tight">{currentChengCost}</span>
         </div>
       </div>
 
