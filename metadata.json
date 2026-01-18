@@ -1,5 +1,5 @@
 {
-  "name": "五代麥樂獸拼圖配點",
+  "name": "五代碎片模擬器",
   "description": "A calculator for optimizing shard allocation between Main Battle and Special Skills based on specific game mechanics.",
   "requestFramePermissions": []
 }

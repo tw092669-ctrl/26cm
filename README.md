@@ -2,7 +2,7 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# 五代麥樂獸拼圖配點工具
+# 五代碎片模擬器
 
 這是一個基於 React + TypeScript + Vite 構建的麥樂獸拼圖配點計算工具，可協助玩家規劃角色屬性配置。
 

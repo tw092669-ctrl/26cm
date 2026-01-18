@@ -327,7 +327,7 @@ const App: React.FC = () => {
                 <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="white" />
               </div>
               <h1 className="text-3xl sm:text-5xl font-extrabold bg-gradient-to-r from-ui-coral via-ui-pink to-ui-lavender bg-clip-text text-transparent">
-                五代麥樂獸拼圖配點
+                五代碎片模擬器
               </h1>
             </div>
             <p className="text-base sm:text-xl font-semibold text-coffee-600 mt-1">計算最佳的主戰與特技等級分配</p>
