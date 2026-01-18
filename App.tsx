@@ -689,8 +689,9 @@ const App: React.FC = () => {
             </div>
         </div>
 
-        <div className="text-center text-coffee-800 text-sm sm:text-base font-extrabold pb-8">
-          表格製作_by 小不    網頁製作_by 26
+        <div className="text-center text-coffee-800 text-sm sm:text-base font-extrabold pb-8 space-y-1">
+          <div>表格製作_by 小不</div>
+          <div>網頁製作_by 26</div>
         </div>
 
       </div>
