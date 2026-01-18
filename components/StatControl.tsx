@@ -252,12 +252,19 @@ export const StatControl: React.FC<StatControlProps> = ({
         </div>
       )}
 
-      {/* Used Cost (Subtle) */}
-      <div className="mt-1 lg:mt-2 text-[10px] lg:text-xs text-coffee-400 h-[0.875rem] lg:h-[1rem] flex flex-col items-center justify-center font-bold leading-tight">
-         <div>已用碎片: {currentCost}</div>
-         {currentChengCost > 0 && (
-           <div className="text-yellow-600">已用澄閃閃: {currentChengCost}</div>
-         )}
+      {/* Current Resources Display - Two Blocks */}
+      <div className="mt-1 lg:mt-2 w-full grid grid-cols-2 gap-1 lg:gap-2">
+        {/* Left: Shards */}
+        <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg px-2 py-1 lg:py-1.5 border border-amber-200 flex flex-col items-center justify-center">
+          <span className="text-[10px] lg:text-xs text-amber-600 font-extrabold leading-none">碎片</span>
+          <span className="text-sm lg:text-base text-amber-700 font-bold font-mono leading-tight">{currentCost}</span>
+        </div>
+        
+        {/* Right: Cheng */}
+        <div className="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg px-2 py-1 lg:py-1.5 border border-yellow-200 flex flex-col items-center justify-center">
+          <span className="text-[10px] lg:text-xs text-yellow-600 font-extrabold leading-none">澄閃閃</span>
+          <span className="text-sm lg:text-base text-yellow-700 font-bold font-mono leading-tight">{currentChengCost}</span>
+        </div>
       </div>
 
       {/* Extra Description (e.g. Warning) */}

@@ -394,9 +394,10 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* 3. Shard Input */}
+            {/* 3. Shard Input & Cheng Display */}
             {/* Desktop: Order 3 (Right), Mobile: Order 3 (Bottom Right) */}
-            <div className="order-3 md:order-3 col-span-1 flex justify-end w-full md:w-auto">
+            <div className="order-3 md:order-3 col-span-1 flex flex-col sm:flex-row gap-2 justify-end w-full md:w-auto">
+               {/* Shard Input */}
                <div className={`flex items-center justify-center sm:justify-end gap-1 sm:gap-3 p-1 sm:p-2 pr-3 sm:pr-4 rounded-full border-2 transition-colors w-full md:w-auto ${
                 isFreeMode ? 'bg-purple-50 border-purple-200' : 'bg-white border-cream-300'
               }`}>
@@ -423,6 +424,14 @@ const App: React.FC = () => {
                         : 'text-coffee-800 border-b-2 border-transparent focus:border-amber-400'
                     }`}
                   />
+                </div>
+              </div>
+              
+              {/* Cheng Display */}
+              <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 px-3 sm:px-4 py-1 sm:py-2 rounded-full flex items-center justify-center gap-1 sm:gap-2 w-full md:w-auto shadow-soft">
+                <div className="text-center flex items-center gap-1 sm:gap-2">
+                  <span className="text-xs sm:text-sm text-yellow-600 uppercase font-extrabold whitespace-nowrap">澄閃閃</span>
+                  <span className="text-lg sm:text-2xl font-mono font-extrabold text-yellow-700">{currentMainChengCost + currentTotalSkillChengCost}</span>
                 </div>
               </div>
             </div>
@@ -590,32 +599,74 @@ const App: React.FC = () => {
         {/* Reference Data Table */}
         <div className="mt-8 border-t-2 border-cream-200 pt-8">
             <h3 className="text-ui-lavender text-sm sm:text-base font-extrabold mb-4 uppercase tracking-widest text-center">階段參考表</h3>
-            <div className="overflow-x-auto rounded-2xl sm:rounded-3xl border-2 border-cream-200 shadow-soft-lg">
+            
+            {/* Main Battle Table */}
+            <div className="mb-6">
+              <h4 className="text-ui-coral text-xs sm:text-sm font-extrabold mb-2 uppercase tracking-wide">主戰等級</h4>
+              <div className="overflow-x-auto rounded-2xl sm:rounded-3xl border-2 border-cream-200 shadow-soft-lg">
                 <table className="w-full text-xs sm:text-sm text-left text-coffee-600 bg-white">
                     <thead className="text-[10px] sm:text-xs text-coffee-500 uppercase bg-gradient-to-r from-cream-100 to-cream-50">
                         <tr>
-                            <th className="px-2 sm:px-6 py-2 sm:py-3 font-bold">階段</th>
-                            <th className="px-2 sm:px-6 py-2 sm:py-3 font-bold">累計碎片</th>
-                            <th className="px-2 sm:px-6 py-2 sm:py-3 font-bold">該級成本</th>
-                            <th className="px-2 sm:px-6 py-2 sm:py-3 font-bold">倍率</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold">階段</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold">碎片成本</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-yellow-600">澄閃閃</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold">累計碎片</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-yellow-600">累計澄閃閃</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold">倍率</th>
                         </tr>
                     </thead>
                     <tbody>
                         {MAIN_BATTLE_COSTS.map((m) => (
                             <tr key={`main-${m.level}`} className="border-b border-cream-100 hover:bg-gradient-to-r hover:from-ui-coral/5 hover:to-transparent transition-colors">
-                                <td className={`px-2 sm:px-6 py-1.5 sm:py-2 font-bold whitespace-nowrap ${
+                                <td className={`px-2 sm:px-4 py-1.5 sm:py-2 font-bold whitespace-nowrap ${
                                     m.rank === MainRank.GOLD ? 'text-ui-gold' : 
                                     m.rank === MainRank.RED ? 'text-ui-coral' : 'text-ui-lavender'
                                 }`}>
                                     {m.label}
                                 </td>
-                                <td className="px-2 sm:px-6 py-1.5 sm:py-2 font-semibold">{m.cumulativeCost}</td>
-                                <td className="px-2 sm:px-6 py-1.5 sm:py-2 font-semibold">{m.cost}</td>
-                                <td className="px-2 sm:px-6 py-1.5 sm:py-2 font-mono font-semibold text-coffee-400">{getMainMultiplier(m.level)}%</td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold">{m.cost}</td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold text-yellow-700">{m.chengCost}</td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold text-amber-600">{m.cumulativeCost}</td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold text-yellow-600">{m.cumulativeChengCost}</td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-mono font-semibold text-coffee-400">{getMainMultiplier(m.level)}%</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+              </div>
+            </div>
+
+            {/* Skill Table */}
+            <div>
+              <h4 className="text-ui-teal text-xs sm:text-sm font-extrabold mb-2 uppercase tracking-wide">特技等級</h4>
+              <div className="overflow-x-auto rounded-2xl sm:rounded-3xl border-2 border-cream-200 shadow-soft-lg">
+                <table className="w-full text-xs sm:text-sm text-left text-coffee-600 bg-white">
+                    <thead className="text-[10px] sm:text-xs text-coffee-500 uppercase bg-gradient-to-r from-cream-100 to-cream-50">
+                        <tr>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold">等級</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold">碎片成本</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-yellow-600">澄閃閃</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold">累計碎片</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-yellow-600">累計澄閃閃</th>
+                            <th className="px-2 sm:px-4 py-2 sm:py-3 font-bold">基礎倍率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {SKILL_COSTS.map((s) => (
+                            <tr key={`skill-${s.level}`} className="border-b border-cream-100 hover:bg-gradient-to-r hover:from-ui-teal/5 hover:to-transparent transition-colors">
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-ui-teal whitespace-nowrap">
+                                    Lv.{s.level}
+                                </td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold">{s.cost}</td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold text-yellow-700">{s.chengCost}</td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold text-amber-600">{s.cumulativeCost}</td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-semibold text-yellow-600">{s.cumulativeChengCost}</td>
+                                <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-mono font-semibold text-coffee-400">{getSkillMultiplier(s.level)}%</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+              </div>
             </div>
         </div>
 
